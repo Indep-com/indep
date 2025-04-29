@@ -58,7 +58,7 @@ Projet réalisé en architecture **microservices** pour garantir la scalabilité
 
 ### 2. Cloner le projet
 ```bash
-git clone https://github.com/votre-org/indep-com.git
+git clone https://github.com/Indep-com/indep.git
 cd indep-com
 ```
 
@@ -124,13 +124,7 @@ Cela lancera :
 
 ## 📅 Auteurs
 
-- @Quidiboz
-- @Adel
-- @breizherlnt
+- Guy Boireau 
+- Adel Djahnit
+- Erwan Nea
 
----
-
-## 📊 Licence
-
-Projet réalisé dans le cadre du cursus développement web 2025.
-Licence MIT.
