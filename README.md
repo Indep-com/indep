@@ -35,7 +35,7 @@ Projet réalisé en architecture **microservices** pour garantir la scalabilité
 
 ---
 
-## 🛋þ Fonctionnalités principales
+## 🛋 Fonctionnalités principales
 
 - Inscription et connexion utilisateurs (Freelance / Client)
 - Gestion de profils indépendants et d'entreprise
