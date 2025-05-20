@@ -1,9 +1,12 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-      "outDir": "dist",
-      "rootDir": "src"
-    },
-    "include": ["src"]
-  }
-  
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",         // <— change ESNext en CommonJS
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "rootDir": "src",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": ["src"]
+}
