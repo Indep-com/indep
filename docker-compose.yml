@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    container_name: indep-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: indep
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: .
+      dockerfile: apps/indep-api/Dockerfile
+    container_name: indep-api
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL:
+    depends_on:
+      - db
+    restart: unless-stopped
+
+volumes:
+  db-data:

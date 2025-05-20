@@ -1,0 +1,18 @@
+# Ignorer les répertoires volumineux
+node_modules
+dist
+.git
+.gitignore
+.env
+.env.*
+*.log
+*.md
+
+# Ignorer les dépendances globales du monorepo
+../indep-front
+../../node_modules
+../../.git
+../../.vscode
+../../*.log
+../../*.md
+../../.env*
