@@ -80,7 +80,7 @@ Créer un fichier `.env` pour chaque partie :
 
 **Backend `.env`**
 
-```
+```bash
 DATABASE_URL=postgresql://user:password@db:5432/indepcom
 REDIS_HOST=redis
 REDIS_PORT=6379
@@ -89,7 +89,7 @@ JWT_SECRET=your_jwt_secret
 
 **Frontend `.env.local`**
 
-```
+```bash
 NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 
