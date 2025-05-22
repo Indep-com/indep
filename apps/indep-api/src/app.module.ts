@@ -9,12 +9,12 @@ import { AppService } from './app.service';
       {
         name: 'HELLO_SERVICE',
         transport: Transport.TCP,
-        options: { host: '127.0.0.1', port: 4001 },
+        options: { host: 'hello-service', port: 4001 },
       },
       {
         name: 'WORLD_SERVICE',
         transport: Transport.TCP,
-        options: { host: '127.0.0.1', port: 4002 },
+        options: { host: 'world-service', port: 4002 },
       },
     ]),
   ],
