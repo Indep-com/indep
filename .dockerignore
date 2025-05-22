@@ -1,0 +1,9 @@
+apps/indep-api/node_modules
+.pnpm-store
+dist
+.git
+*.log
+*.lock
+*.env
+.vscode
+.idea
