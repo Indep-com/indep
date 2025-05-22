@@ -15,13 +15,39 @@ services:
     ports:
       - "5432:5432"
 
-  backend:
+  gateway:
     build:
       context: .
       dockerfile: apps/indep-api/Dockerfile
     container_name: indep-api
     ports:
       - "3002:3000"
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/indep
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  hello-service:
+    build:
+      context: .
+      dockerfile: apps/hello-service/Dockerfile
+    container_name: hello-service
+    ports:
+      - "4001:4001"
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/indep
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  world-service:
+    build:
+      context: .
+      dockerfile: apps/world-service/Dockerfile
+    container_name: world-service
+    ports:
+      - "4002:4002"
     environment:
       DATABASE_URL: postgres://user:password@db:5432/indep
     depends_on:
@@ -36,7 +62,7 @@ services:
     ports:
       - "3001:3000"
     depends_on:
-      - backend
+      - gateway
     restart: unless-stopped
 
   minio:
