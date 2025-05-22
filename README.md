@@ -5,6 +5,7 @@
 ---
 
 ## 🔍 Objectif du projet
+
 Créer une application web permettant aux freelances de proposer leurs compétences et aux clients de publier des missions, avec un système de candidature, de messagerie privée, de notifications et de paiements.
 
 Projet réalisé en architecture **microservices** pour garantir la scalabilité, la performance et la maintenabilité.
@@ -51,28 +52,34 @@ Projet réalisé en architecture **microservices** pour garantir la scalabilité
 ## 📚 Guide de déploiement local
 
 ### 1. Prérequis
+
 - Node.js (>=18)
 - PostgreSQL
 - Redis
 - Docker (obligatoire pour lancer toute la solution)
 
 ### 2. Cloner le projet
+
 ```bash
 git clone https://github.com/Indep-com/indep.git
 cd indep-com
 ```
 
 ### 3. Installer les dépendances
+
 Frontend et Backend :
+
 ```bash
 cd frontend && npm install
 cd ../backend && npm install
 ```
 
 ### 4. Configurer les environnements
+
 Créer un fichier `.env` pour chaque partie :
 
 **Backend `.env`**
+
 ```
 DATABASE_URL=postgresql://user:password@db:5432/indepcom
 REDIS_HOST=redis
@@ -81,6 +88,7 @@ JWT_SECRET=your_jwt_secret
 ```
 
 **Frontend `.env.local`**
+
 ```
 NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
@@ -88,11 +96,13 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 ### 5. Lancer les services avec Docker
 
 **Depuis la racine du projet** :
+
 ```bash
 docker-compose up --build
 ```
 
 Cela lancera :
+
 - Frontend (Next.js)
 - Backend (NestJS)
 - Base de données PostgreSQL
@@ -124,7 +134,6 @@ Cela lancera :
 
 ## 📅 Auteurs
 
-- Guy Boireau 
+- Guy Boireau
 - Adel Djahnit
 - Erwan Nea
-
