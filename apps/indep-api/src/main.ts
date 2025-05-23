@@ -9,4 +9,4 @@ async function bootstrap() {
   
   console.log('🚀 indep-Api listening on http://localhost:3000');
 }
-bootstrap();
+void bootstrap();
