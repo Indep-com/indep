@@ -3,7 +3,7 @@ name: CI/CD - Indép.com Monorepo
 on:
   push:
     branches:
-      - '**'     # Se lance sur tous les commits sur toutes les branches
+      - '**'     
   pull_request:
     branches:
       - develop
@@ -16,15 +16,15 @@ jobs:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v3
 
-      - name: 📆 Setup PNPM
+      - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 10.10.0
 
-      - name: 💚 Setup Node.js
+      - name: 🟢 Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 23.11.0
           cache: 'pnpm'
 
       - name: 📥 Install dependencies
