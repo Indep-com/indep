@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UtilisateurModule } from './utilisateur/utilisateur.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { AppService } from './app.service';
         options: { host: 'world-service', port: 4002 },
       },
     ]),
+    UtilisateurModule,
   ],
   controllers: [AppController],
   providers: [AppService],
