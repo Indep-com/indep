@@ -10,9 +10,9 @@ datasource db {
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model candidatures {
-  id                Int       @id @default(autoincrement())
-  mission_id        Int?
-  user_id           Int?
+  id                String    @id @default(uuid()) @db.Uuid
+  mission_id        String?   @db.Uuid
+  user_id           String?   @db.Uuid
   lettre_motivation String?
   status            String?   @default("en_attente") @db.VarChar(20)
   created_at        DateTime? @default(now()) @db.Timestamp(6)
@@ -21,8 +21,8 @@ model candidatures {
 }
 
 model freelance_cvs {
-  id            Int       @id @default(autoincrement())
-  user_id       Int?
+  id            String    @id @default(uuid()) @db.Uuid
+  user_id       String?   @db.Uuid
   bio           String?
   skills        String[]
   portfolio_url String?
@@ -33,8 +33,8 @@ model freelance_cvs {
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model missions {
-  id           Int            @id @default(autoincrement())
-  user_id      Int?
+  id           String         @id @default(uuid()) @db.Uuid
+  user_id      String?        @db.Uuid
   title        String         @db.VarChar(255)
   description  String?
   price        Decimal?       @db.Decimal(10, 2)
@@ -46,7 +46,7 @@ model missions {
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model users {
-  id            Int             @id @default(autoincrement())
+  id            String          @id @default(uuid()) @db.Uuid
   email         String          @unique @db.VarChar(255)
   password      String          @db.VarChar(255)
   name          String          @db.VarChar(255)
