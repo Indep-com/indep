@@ -1,32 +1,52 @@
 import { Injectable } from "@nestjs/common";
+import { PrismaService } from "./prisma.service";
 
 @Injectable()
 export class MessagingService {
-  private messages: {
-    senderId: string;
-    recipientId: string;
-    message: string;
-    timestamp: string;
-  }[] = [];
+  constructor(private prisma: PrismaService) {}
 
-  saveMessage(data: {
+  async saveMessage(data: {
     senderId: string;
     recipientId: string;
     message: string;
   }) {
-    const msg = {
-      ...data,
-      timestamp: new Date().toISOString(),
-    };
-    this.messages.push(msg);
-    return msg;
+    if (!data.senderId || !data.recipientId || !data.message) {
+      throw new Error("Invalid message data");
+    }
+    if (data.senderId === data.recipientId) {
+      throw new Error("Sender and recipient cannot be the same");
+    }
+    if (data.message.trim() === "") {
+      throw new Error("Message cannot be empty");
+    }
+    // this.prisma.users
+    //   .findUnique({
+    //     where: { id: data.senderId },
+    //   })
+    //   .then((user) => {
+    //     if (!user) {
+    //       throw new Error("Sender does not exist");
+    //     }
+    //   });
+
+    return this.prisma.message.create({
+      data: {
+        senderId: data.senderId,
+        recipientId: data.recipientId,
+        message: data.message,
+      },
+    });
   }
 
-  getMessages(senderId: string, recipientId: string) {
-    return this.messages.filter(
-      (m) =>
-        (m.senderId === senderId && m.recipientId === recipientId) ||
-        (m.senderId === recipientId && m.recipientId === senderId),
-    );
+  async getMessages(senderId: string, recipientId: string) {
+    return this.prisma.message.findMany({
+      where: {
+        OR: [
+          { senderId, recipientId },
+          { senderId: recipientId, recipientId: senderId },
+        ],
+      },
+      orderBy: { timestamp: "asc" },
+    });
   }
 }
