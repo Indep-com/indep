@@ -29,20 +29,20 @@ export class UtilisateurService {
     return this.prisma.users.findMany();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.users.findUnique({
       where: { id },
     });
   }
 
-  update(id: number, updateUtilisateurDto: UpdateUtilisateurDto) {
+  update(id: string, updateUtilisateurDto: UpdateUtilisateurDto) {
     return this.prisma.users.update({
       where: { id },
       data: updateUtilisateurDto,
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.users.delete({
       where: { id },
     });
