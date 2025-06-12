@@ -1,11 +1,11 @@
 // apps/world-service/src/world.service.ts
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+import { Controller } from "@nestjs/common";
+import { MessagePattern } from "@nestjs/microservices";
 
-@Controller()                 
+@Controller()
 export class WorldService {
-  @MessagePattern({ cmd: 'world' })
+  @MessagePattern({ cmd: "world" })
   getWorld(): { msg: string } {
-    return { msg: 'world' };
+    return { msg: "world" };
   }
 }
