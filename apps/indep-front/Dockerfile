@@ -34,6 +34,6 @@ COPY --from=builder /app/apps/indep-front/next.config.ts ./
 # Installer seulement les deps de prod de l'app front
 RUN npm install -g pnpm && pnpm install --prod
 
-EXPOSE 3000
+EXPOSE 3001
 
 CMD ["pnpm", "start"]
