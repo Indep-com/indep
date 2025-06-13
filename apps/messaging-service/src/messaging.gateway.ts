@@ -24,17 +24,16 @@ export class MessagingGateway
   }
 
   @SubscribeMessage("sendMessage")
-  handleSendMessage(
+  async handleSendMessage(
     @MessageBody()
     data: { senderId: string; recipientId: string; message: string },
     @ConnectedSocket() client: Socket,
   ) {
     console.log("Message reçu du client :", data);
 
-    const savedMessage = this.messagingService.saveMessage(data);
+    const savedMessage = await this.messagingService.saveMessage(data);
 
     client.broadcast.emit("newMessage", savedMessage);
-
     client.emit("newMessage", savedMessage);
 
     return savedMessage;
