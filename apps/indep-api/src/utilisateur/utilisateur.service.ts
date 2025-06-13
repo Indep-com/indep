@@ -36,6 +36,7 @@ export class UtilisateurService {
   }
 
   findOneByEmail(email: string) {
+    console.log('Je suis email service');
     return this.prisma.users.findUnique({
       where: { email },
     });
