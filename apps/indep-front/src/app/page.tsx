@@ -1,21 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import MessagingChat from '../components/MessagingChat';
 
 export default function Page() {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    fetch('http://localhost:3002/hello-world')
-      .then(res => res.text())
-      .then(data => setMessage(data))
-      .catch(err => setMessage('Erreur : ' + err.message));
-  }, []);
+  
 
   return (
     <main>
       <h1>Résultat :</h1>
-      <p>{message}</p>
+       <MessagingChat senderId="0d4488a2-3fef-4e07-8123-3f7fe40e2a1d" recipientId="78de6ccd-512b-452f-ac15-677cec99b91e" />;
     </main>
   );
 }
