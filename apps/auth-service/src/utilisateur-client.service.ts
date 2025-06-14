@@ -27,4 +27,27 @@ export class UtilisateurClientService {
             throw new InternalServerErrorException('Erreur lors de la communication avec le service utilisateur');
         }
     }
+    async inscrireUnUtilisateur(utilisateur: UtilisateurModel): Promise<UtilisateurModel> {
+        try {
+            console.log('Utilisateur à créer:', utilisateur);
+            const response = await fetch(`${this.API_URL}/utilisateur/creerUtilisateur`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(utilisateur),
+            });
+
+            if (!response.ok) {
+                const errorBody = await response.text(); // pour debug
+                console.error('Réponse non OK:', response.status, errorBody);
+                throw new InternalServerErrorException(`Erreur HTTP: ${response.status} - ${response.statusText}`);
+            }
+
+            return (await response.json()) as UtilisateurModel;
+        } catch (error) {
+            console.error('Erreur lors de l\'inscription de l\'utilisateur :', error);
+            throw new InternalServerErrorException('Erreur lors de la communication avec le service utilisateur');
+        }
+    }
 }

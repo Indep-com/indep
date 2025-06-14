@@ -14,13 +14,13 @@ import { lastValueFrom } from 'rxjs';
 export class AppController implements OnModuleInit {
   constructor(
     private readonly appService: AppService,
-    @Inject('HELLO_SERVICE') private readonly helloClient: ClientProxy,
-    @Inject('WORLD_SERVICE') private readonly worldClient: ClientProxy,
+    /*@Inject('HELLO_SERVICE') private readonly helloClient: ClientProxy,
+    @Inject('WORLD_SERVICE') private readonly worldClient: ClientProxy,*/
   ) {}
 
   // Connect to microservices when module initializes
   async onModuleInit() {
-    try {
+    /*try {
       await this.helloClient.connect();
       await this.worldClient.connect();
     } catch (err) {
@@ -61,6 +61,6 @@ export class AppController implements OnModuleInit {
         'Error retrieving hello-world',
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
-    }
+    }*/
   }
 }
