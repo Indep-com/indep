@@ -42,8 +42,6 @@ export class UtilisateurService {
 
       throw new InternalServerErrorException('Erreur lors de la création de l’utilisateur');
     }
-
-
   }
 
   findAll() {

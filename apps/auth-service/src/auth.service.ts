@@ -19,7 +19,7 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const payload = { sub: utilisateur.id, email: utilisateur.email };
+    const payload = { sub: utilisateur.id, email: utilisateur.email,  role: utilisateur.role, };
     return {
       message: 'Authentification réussie',
       access_token: this.jwtService.sign(payload),
@@ -27,8 +27,16 @@ export class AuthService {
   }
 
   async register(utilisateurModel: UtilisateurModel) {
-    const Utilisateur: UtilisateurModel =  await this.utilisateurClientService.inscrireUnUtilisateur(utilisateurModel);
-    return await this.login(Utilisateur)
+    await this.utilisateurClientService.inscrireUnUtilisateur(utilisateurModel);
+
+    const token = await this.login({
+      email: utilisateurModel.email,
+      password: utilisateurModel.password,
+    });
+
+    return {
+      access_token: token,
+    };
   }
 
 
