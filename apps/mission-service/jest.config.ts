@@ -1,14 +1,13 @@
-export default {
-    preset: 'ts-jest',
-    testEnvironment: 'node',
-    moduleFileExtensions: ['js', 'json', 'ts'],
-    rootDir: '.',
-    testRegex: '.*\\.spec\\.ts$',
-    transform: {
-      '^.+\\.ts$': ['ts-jest', { isolatedModules: true }],
-    },
-    moduleNameMapper: {
-      '^@/(.*)$': '<rootDir>/$1',
-    },
-  };
-  
+import type { Config } from 'jest';
+
+const config: Config = {
+  rootDir: 'src',
+  testRegex: '.*\\.spec\\.ts$',
+  moduleFileExtensions: ['js', 'json', 'ts'],
+  transform: {
+    '^.+\\.(t|j)s$': ['ts-jest', { isolatedModules: true }],
+  },
+  testEnvironment: 'node',
+};
+
+export default config;
