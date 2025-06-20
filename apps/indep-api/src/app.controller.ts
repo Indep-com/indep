@@ -11,6 +11,7 @@ import { Inject } from '@nestjs/common';
 import { lastValueFrom } from 'rxjs';
 
 @Controller()
+//go regrouper tout 
 export class AppController implements OnModuleInit {
   constructor(
     private readonly appService: AppService,
