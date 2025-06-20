@@ -8,13 +8,25 @@ describe('MissionController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [MissionController],
-      providers: [MissionService],
+      providers: [
+        {
+          provide: MissionService,
+          useValue: {
+            findAll: jest.fn().mockReturnValue([{ id: '1', title: 'Test Mission' }]),
+          },
+        },
+      ],
     }).compile();
 
     controller = module.get<MissionController>(MissionController);
   });
 
-  it('should return an array of missions', () => {
-    expect(controller.findAll()).toEqual([{ id: 1, name: 'Mission 1' }]);
+  it('should be defined', () => {
+    expect(controller).toBeDefined();
+  });
+
+  it('should return an array of missions', async () => {
+    const result = await controller.findAll();
+    expect(result).toEqual([{ id: '1', title: 'Test Mission' }]);
   });
 });

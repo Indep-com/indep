@@ -7,7 +7,7 @@ export class CreateMissionDto {
 
   @IsNotEmpty()
   @IsString()
-  title: string;
+  title?: string;
 
   @IsOptional()
   @IsString()
