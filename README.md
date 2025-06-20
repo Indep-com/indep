@@ -70,8 +70,8 @@ cd indep-com
 Frontend et Backend :
 
 ```bash
-cd frontend && npm install
-cd ../backend && npm install
+cd frontend && pnpm install
+cd ../backend && pnpm install
 ```
 
 ### 4. Configurer les environnements

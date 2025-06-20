@@ -256,8 +256,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.9.0
+   * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
    */
   export type PrismaVersion = {
     client: string
@@ -1227,37 +1227,23 @@ export namespace Prisma {
 
   export type AggregateCandidatures = {
     _count: CandidaturesCountAggregateOutputType | null
-    _avg: CandidaturesAvgAggregateOutputType | null
-    _sum: CandidaturesSumAggregateOutputType | null
     _min: CandidaturesMinAggregateOutputType | null
     _max: CandidaturesMaxAggregateOutputType | null
   }
 
-  export type CandidaturesAvgAggregateOutputType = {
-    id: number | null
-    mission_id: number | null
-    user_id: number | null
-  }
-
-  export type CandidaturesSumAggregateOutputType = {
-    id: number | null
-    mission_id: number | null
-    user_id: number | null
-  }
-
   export type CandidaturesMinAggregateOutputType = {
-    id: number | null
-    mission_id: number | null
-    user_id: number | null
+    id: string | null
+    mission_id: string | null
+    user_id: string | null
     lettre_motivation: string | null
     status: string | null
     created_at: Date | null
   }
 
   export type CandidaturesMaxAggregateOutputType = {
-    id: number | null
-    mission_id: number | null
-    user_id: number | null
+    id: string | null
+    mission_id: string | null
+    user_id: string | null
     lettre_motivation: string | null
     status: string | null
     created_at: Date | null
@@ -1273,18 +1259,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type CandidaturesAvgAggregateInputType = {
-    id?: true
-    mission_id?: true
-    user_id?: true
-  }
-
-  export type CandidaturesSumAggregateInputType = {
-    id?: true
-    mission_id?: true
-    user_id?: true
-  }
 
   export type CandidaturesMinAggregateInputType = {
     id?: true
@@ -1352,18 +1326,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: CandidaturesAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: CandidaturesSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: CandidaturesMinAggregateInputType
@@ -1394,22 +1356,18 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CandidaturesCountAggregateInputType | true
-    _avg?: CandidaturesAvgAggregateInputType
-    _sum?: CandidaturesSumAggregateInputType
     _min?: CandidaturesMinAggregateInputType
     _max?: CandidaturesMaxAggregateInputType
   }
 
   export type CandidaturesGroupByOutputType = {
-    id: number
-    mission_id: number | null
-    user_id: number | null
+    id: string
+    mission_id: string | null
+    user_id: string | null
     lettre_motivation: string | null
     status: string | null
     created_at: Date | null
     _count: CandidaturesCountAggregateOutputType | null
-    _avg: CandidaturesAvgAggregateOutputType | null
-    _sum: CandidaturesSumAggregateOutputType | null
     _min: CandidaturesMinAggregateOutputType | null
     _max: CandidaturesMaxAggregateOutputType | null
   }
@@ -1491,9 +1449,9 @@ export namespace Prisma {
       users: Prisma.$usersPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      mission_id: number | null
-      user_id: number | null
+      id: string
+      mission_id: string | null
+      user_id: string | null
       lettre_motivation: string | null
       status: string | null
       created_at: Date | null
@@ -1922,9 +1880,9 @@ export namespace Prisma {
    * Fields of the candidatures model
    */
   interface candidaturesFieldRefs {
-    readonly id: FieldRef<"candidatures", 'Int'>
-    readonly mission_id: FieldRef<"candidatures", 'Int'>
-    readonly user_id: FieldRef<"candidatures", 'Int'>
+    readonly id: FieldRef<"candidatures", 'String'>
+    readonly mission_id: FieldRef<"candidatures", 'String'>
+    readonly user_id: FieldRef<"candidatures", 'String'>
     readonly lettre_motivation: FieldRef<"candidatures", 'String'>
     readonly status: FieldRef<"candidatures", 'String'>
     readonly created_at: FieldRef<"candidatures", 'DateTime'>
@@ -2386,25 +2344,13 @@ export namespace Prisma {
 
   export type AggregateFreelance_cvs = {
     _count: Freelance_cvsCountAggregateOutputType | null
-    _avg: Freelance_cvsAvgAggregateOutputType | null
-    _sum: Freelance_cvsSumAggregateOutputType | null
     _min: Freelance_cvsMinAggregateOutputType | null
     _max: Freelance_cvsMaxAggregateOutputType | null
   }
 
-  export type Freelance_cvsAvgAggregateOutputType = {
-    id: number | null
-    user_id: number | null
-  }
-
-  export type Freelance_cvsSumAggregateOutputType = {
-    id: number | null
-    user_id: number | null
-  }
-
   export type Freelance_cvsMinAggregateOutputType = {
-    id: number | null
-    user_id: number | null
+    id: string | null
+    user_id: string | null
     bio: string | null
     portfolio_url: string | null
     cv_url: string | null
@@ -2412,8 +2358,8 @@ export namespace Prisma {
   }
 
   export type Freelance_cvsMaxAggregateOutputType = {
-    id: number | null
-    user_id: number | null
+    id: string | null
+    user_id: string | null
     bio: string | null
     portfolio_url: string | null
     cv_url: string | null
@@ -2431,16 +2377,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type Freelance_cvsAvgAggregateInputType = {
-    id?: true
-    user_id?: true
-  }
-
-  export type Freelance_cvsSumAggregateInputType = {
-    id?: true
-    user_id?: true
-  }
 
   export type Freelance_cvsMinAggregateInputType = {
     id?: true
@@ -2509,18 +2445,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: Freelance_cvsAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Freelance_cvsSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: Freelance_cvsMinAggregateInputType
@@ -2551,23 +2475,19 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: Freelance_cvsCountAggregateInputType | true
-    _avg?: Freelance_cvsAvgAggregateInputType
-    _sum?: Freelance_cvsSumAggregateInputType
     _min?: Freelance_cvsMinAggregateInputType
     _max?: Freelance_cvsMaxAggregateInputType
   }
 
   export type Freelance_cvsGroupByOutputType = {
-    id: number
-    user_id: number | null
+    id: string
+    user_id: string | null
     bio: string | null
     skills: string[]
     portfolio_url: string | null
     cv_url: string | null
     created_at: Date | null
     _count: Freelance_cvsCountAggregateOutputType | null
-    _avg: Freelance_cvsAvgAggregateOutputType | null
-    _sum: Freelance_cvsSumAggregateOutputType | null
     _min: Freelance_cvsMinAggregateOutputType | null
     _max: Freelance_cvsMaxAggregateOutputType | null
   }
@@ -2646,8 +2566,8 @@ export namespace Prisma {
       users: Prisma.$usersPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      user_id: number | null
+      id: string
+      user_id: string | null
       bio: string | null
       skills: string[]
       portfolio_url: string | null
@@ -3077,8 +2997,8 @@ export namespace Prisma {
    * Fields of the freelance_cvs model
    */
   interface freelance_cvsFieldRefs {
-    readonly id: FieldRef<"freelance_cvs", 'Int'>
-    readonly user_id: FieldRef<"freelance_cvs", 'Int'>
+    readonly id: FieldRef<"freelance_cvs", 'String'>
+    readonly user_id: FieldRef<"freelance_cvs", 'String'>
     readonly bio: FieldRef<"freelance_cvs", 'String'>
     readonly skills: FieldRef<"freelance_cvs", 'String[]'>
     readonly portfolio_url: FieldRef<"freelance_cvs", 'String'>
@@ -3530,20 +3450,16 @@ export namespace Prisma {
   }
 
   export type MissionsAvgAggregateOutputType = {
-    id: number | null
-    user_id: number | null
     price: Decimal | null
   }
 
   export type MissionsSumAggregateOutputType = {
-    id: number | null
-    user_id: number | null
     price: Decimal | null
   }
 
   export type MissionsMinAggregateOutputType = {
-    id: number | null
-    user_id: number | null
+    id: string | null
+    user_id: string | null
     title: string | null
     description: string | null
     price: Decimal | null
@@ -3552,8 +3468,8 @@ export namespace Prisma {
   }
 
   export type MissionsMaxAggregateOutputType = {
-    id: number | null
-    user_id: number | null
+    id: string | null
+    user_id: string | null
     title: string | null
     description: string | null
     price: Decimal | null
@@ -3574,14 +3490,10 @@ export namespace Prisma {
 
 
   export type MissionsAvgAggregateInputType = {
-    id?: true
-    user_id?: true
     price?: true
   }
 
   export type MissionsSumAggregateInputType = {
-    id?: true
-    user_id?: true
     price?: true
   }
 
@@ -3703,8 +3615,8 @@ export namespace Prisma {
   }
 
   export type MissionsGroupByOutputType = {
-    id: number
-    user_id: number | null
+    id: string
+    user_id: string | null
     title: string
     description: string | null
     price: Decimal | null
@@ -3796,8 +3708,8 @@ export namespace Prisma {
       users: Prisma.$usersPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      user_id: number | null
+      id: string
+      user_id: string | null
       title: string
       description: string | null
       price: Prisma.Decimal | null
@@ -4228,8 +4140,8 @@ export namespace Prisma {
    * Fields of the missions model
    */
   interface missionsFieldRefs {
-    readonly id: FieldRef<"missions", 'Int'>
-    readonly user_id: FieldRef<"missions", 'Int'>
+    readonly id: FieldRef<"missions", 'String'>
+    readonly user_id: FieldRef<"missions", 'String'>
     readonly title: FieldRef<"missions", 'String'>
     readonly description: FieldRef<"missions", 'String'>
     readonly price: FieldRef<"missions", 'Decimal'>
@@ -4698,22 +4610,12 @@ export namespace Prisma {
 
   export type AggregateUsers = {
     _count: UsersCountAggregateOutputType | null
-    _avg: UsersAvgAggregateOutputType | null
-    _sum: UsersSumAggregateOutputType | null
     _min: UsersMinAggregateOutputType | null
     _max: UsersMaxAggregateOutputType | null
   }
 
-  export type UsersAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type UsersSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type UsersMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     email: string | null
     password: string | null
     name: string | null
@@ -4722,7 +4624,7 @@ export namespace Prisma {
   }
 
   export type UsersMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     email: string | null
     password: string | null
     name: string | null
@@ -4740,14 +4642,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type UsersAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type UsersSumAggregateInputType = {
-    id?: true
-  }
 
   export type UsersMinAggregateInputType = {
     id?: true
@@ -4815,18 +4709,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: UsersAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UsersSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: UsersMinAggregateInputType
@@ -4857,22 +4739,18 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UsersCountAggregateInputType | true
-    _avg?: UsersAvgAggregateInputType
-    _sum?: UsersSumAggregateInputType
     _min?: UsersMinAggregateInputType
     _max?: UsersMaxAggregateInputType
   }
 
   export type UsersGroupByOutputType = {
-    id: number
+    id: string
     email: string
     password: string
     name: string
     role: string
     created_at: Date | null
     _count: UsersCountAggregateOutputType | null
-    _avg: UsersAvgAggregateOutputType | null
-    _sum: UsersSumAggregateOutputType | null
     _min: UsersMinAggregateOutputType | null
     _max: UsersMaxAggregateOutputType | null
   }
@@ -4949,7 +4827,7 @@ export namespace Prisma {
       missions: Prisma.$missionsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       email: string
       password: string
       name: string
@@ -5381,7 +5259,7 @@ export namespace Prisma {
    * Fields of the users model
    */
   interface usersFieldRefs {
-    readonly id: FieldRef<"users", 'Int'>
+    readonly id: FieldRef<"users", 'String'>
     readonly email: FieldRef<"users", 'String'>
     readonly password: FieldRef<"users", 'String'>
     readonly name: FieldRef<"users", 'String'>
@@ -5959,20 +5837,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -6015,16 +5879,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Float'
+   * Reference to a field of type 'Int'
    */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
   /**
-   * Reference to a field of type 'Float[]'
+   * Reference to a field of type 'Int[]'
    */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
   /**
    * Deep Input Types
@@ -6035,9 +5899,9 @@ export namespace Prisma {
     AND?: candidaturesWhereInput | candidaturesWhereInput[]
     OR?: candidaturesWhereInput[]
     NOT?: candidaturesWhereInput | candidaturesWhereInput[]
-    id?: IntFilter<"candidatures"> | number
-    mission_id?: IntNullableFilter<"candidatures"> | number | null
-    user_id?: IntNullableFilter<"candidatures"> | number | null
+    id?: UuidFilter<"candidatures"> | string
+    mission_id?: UuidNullableFilter<"candidatures"> | string | null
+    user_id?: UuidNullableFilter<"candidatures"> | string | null
     lettre_motivation?: StringNullableFilter<"candidatures"> | string | null
     status?: StringNullableFilter<"candidatures"> | string | null
     created_at?: DateTimeNullableFilter<"candidatures"> | Date | string | null
@@ -6057,12 +5921,12 @@ export namespace Prisma {
   }
 
   export type candidaturesWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: candidaturesWhereInput | candidaturesWhereInput[]
     OR?: candidaturesWhereInput[]
     NOT?: candidaturesWhereInput | candidaturesWhereInput[]
-    mission_id?: IntNullableFilter<"candidatures"> | number | null
-    user_id?: IntNullableFilter<"candidatures"> | number | null
+    mission_id?: UuidNullableFilter<"candidatures"> | string | null
+    user_id?: UuidNullableFilter<"candidatures"> | string | null
     lettre_motivation?: StringNullableFilter<"candidatures"> | string | null
     status?: StringNullableFilter<"candidatures"> | string | null
     created_at?: DateTimeNullableFilter<"candidatures"> | Date | string | null
@@ -6078,19 +5942,17 @@ export namespace Prisma {
     status?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
     _count?: candidaturesCountOrderByAggregateInput
-    _avg?: candidaturesAvgOrderByAggregateInput
     _max?: candidaturesMaxOrderByAggregateInput
     _min?: candidaturesMinOrderByAggregateInput
-    _sum?: candidaturesSumOrderByAggregateInput
   }
 
   export type candidaturesScalarWhereWithAggregatesInput = {
     AND?: candidaturesScalarWhereWithAggregatesInput | candidaturesScalarWhereWithAggregatesInput[]
     OR?: candidaturesScalarWhereWithAggregatesInput[]
     NOT?: candidaturesScalarWhereWithAggregatesInput | candidaturesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"candidatures"> | number
-    mission_id?: IntNullableWithAggregatesFilter<"candidatures"> | number | null
-    user_id?: IntNullableWithAggregatesFilter<"candidatures"> | number | null
+    id?: UuidWithAggregatesFilter<"candidatures"> | string
+    mission_id?: UuidNullableWithAggregatesFilter<"candidatures"> | string | null
+    user_id?: UuidNullableWithAggregatesFilter<"candidatures"> | string | null
     lettre_motivation?: StringNullableWithAggregatesFilter<"candidatures"> | string | null
     status?: StringNullableWithAggregatesFilter<"candidatures"> | string | null
     created_at?: DateTimeNullableWithAggregatesFilter<"candidatures"> | Date | string | null
@@ -6100,8 +5962,8 @@ export namespace Prisma {
     AND?: freelance_cvsWhereInput | freelance_cvsWhereInput[]
     OR?: freelance_cvsWhereInput[]
     NOT?: freelance_cvsWhereInput | freelance_cvsWhereInput[]
-    id?: IntFilter<"freelance_cvs"> | number
-    user_id?: IntNullableFilter<"freelance_cvs"> | number | null
+    id?: UuidFilter<"freelance_cvs"> | string
+    user_id?: UuidNullableFilter<"freelance_cvs"> | string | null
     bio?: StringNullableFilter<"freelance_cvs"> | string | null
     skills?: StringNullableListFilter<"freelance_cvs">
     portfolio_url?: StringNullableFilter<"freelance_cvs"> | string | null
@@ -6122,11 +5984,11 @@ export namespace Prisma {
   }
 
   export type freelance_cvsWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: freelance_cvsWhereInput | freelance_cvsWhereInput[]
     OR?: freelance_cvsWhereInput[]
     NOT?: freelance_cvsWhereInput | freelance_cvsWhereInput[]
-    user_id?: IntNullableFilter<"freelance_cvs"> | number | null
+    user_id?: UuidNullableFilter<"freelance_cvs"> | string | null
     bio?: StringNullableFilter<"freelance_cvs"> | string | null
     skills?: StringNullableListFilter<"freelance_cvs">
     portfolio_url?: StringNullableFilter<"freelance_cvs"> | string | null
@@ -6144,18 +6006,16 @@ export namespace Prisma {
     cv_url?: SortOrderInput | SortOrder
     created_at?: SortOrderInput | SortOrder
     _count?: freelance_cvsCountOrderByAggregateInput
-    _avg?: freelance_cvsAvgOrderByAggregateInput
     _max?: freelance_cvsMaxOrderByAggregateInput
     _min?: freelance_cvsMinOrderByAggregateInput
-    _sum?: freelance_cvsSumOrderByAggregateInput
   }
 
   export type freelance_cvsScalarWhereWithAggregatesInput = {
     AND?: freelance_cvsScalarWhereWithAggregatesInput | freelance_cvsScalarWhereWithAggregatesInput[]
     OR?: freelance_cvsScalarWhereWithAggregatesInput[]
     NOT?: freelance_cvsScalarWhereWithAggregatesInput | freelance_cvsScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"freelance_cvs"> | number
-    user_id?: IntNullableWithAggregatesFilter<"freelance_cvs"> | number | null
+    id?: UuidWithAggregatesFilter<"freelance_cvs"> | string
+    user_id?: UuidNullableWithAggregatesFilter<"freelance_cvs"> | string | null
     bio?: StringNullableWithAggregatesFilter<"freelance_cvs"> | string | null
     skills?: StringNullableListFilter<"freelance_cvs">
     portfolio_url?: StringNullableWithAggregatesFilter<"freelance_cvs"> | string | null
@@ -6167,8 +6027,8 @@ export namespace Prisma {
     AND?: missionsWhereInput | missionsWhereInput[]
     OR?: missionsWhereInput[]
     NOT?: missionsWhereInput | missionsWhereInput[]
-    id?: IntFilter<"missions"> | number
-    user_id?: IntNullableFilter<"missions"> | number | null
+    id?: UuidFilter<"missions"> | string
+    user_id?: UuidNullableFilter<"missions"> | string | null
     title?: StringFilter<"missions"> | string
     description?: StringNullableFilter<"missions"> | string | null
     price?: DecimalNullableFilter<"missions"> | Decimal | DecimalJsLike | number | string | null
@@ -6191,11 +6051,11 @@ export namespace Prisma {
   }
 
   export type missionsWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: missionsWhereInput | missionsWhereInput[]
     OR?: missionsWhereInput[]
     NOT?: missionsWhereInput | missionsWhereInput[]
-    user_id?: IntNullableFilter<"missions"> | number | null
+    user_id?: UuidNullableFilter<"missions"> | string | null
     title?: StringFilter<"missions"> | string
     description?: StringNullableFilter<"missions"> | string | null
     price?: DecimalNullableFilter<"missions"> | Decimal | DecimalJsLike | number | string | null
@@ -6224,8 +6084,8 @@ export namespace Prisma {
     AND?: missionsScalarWhereWithAggregatesInput | missionsScalarWhereWithAggregatesInput[]
     OR?: missionsScalarWhereWithAggregatesInput[]
     NOT?: missionsScalarWhereWithAggregatesInput | missionsScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"missions"> | number
-    user_id?: IntNullableWithAggregatesFilter<"missions"> | number | null
+    id?: UuidWithAggregatesFilter<"missions"> | string
+    user_id?: UuidNullableWithAggregatesFilter<"missions"> | string | null
     title?: StringWithAggregatesFilter<"missions"> | string
     description?: StringNullableWithAggregatesFilter<"missions"> | string | null
     price?: DecimalNullableWithAggregatesFilter<"missions"> | Decimal | DecimalJsLike | number | string | null
@@ -6237,7 +6097,7 @@ export namespace Prisma {
     AND?: usersWhereInput | usersWhereInput[]
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
-    id?: IntFilter<"users"> | number
+    id?: UuidFilter<"users"> | string
     email?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
     name?: StringFilter<"users"> | string
@@ -6261,7 +6121,7 @@ export namespace Prisma {
   }
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     email?: string
     AND?: usersWhereInput | usersWhereInput[]
     OR?: usersWhereInput[]
@@ -6283,17 +6143,15 @@ export namespace Prisma {
     role?: SortOrder
     created_at?: SortOrderInput | SortOrder
     _count?: usersCountOrderByAggregateInput
-    _avg?: usersAvgOrderByAggregateInput
     _max?: usersMaxOrderByAggregateInput
     _min?: usersMinOrderByAggregateInput
-    _sum?: usersSumOrderByAggregateInput
   }
 
   export type usersScalarWhereWithAggregatesInput = {
     AND?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
     OR?: usersScalarWhereWithAggregatesInput[]
     NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"users"> | number
+    id?: UuidWithAggregatesFilter<"users"> | string
     email?: StringWithAggregatesFilter<"users"> | string
     password?: StringWithAggregatesFilter<"users"> | string
     name?: StringWithAggregatesFilter<"users"> | string
@@ -6302,6 +6160,7 @@ export namespace Prisma {
   }
 
   export type candidaturesCreateInput = {
+    id?: string
     lettre_motivation?: string | null
     status?: string | null
     created_at?: Date | string | null
@@ -6310,15 +6169,16 @@ export namespace Prisma {
   }
 
   export type candidaturesUncheckedCreateInput = {
-    id?: number
-    mission_id?: number | null
-    user_id?: number | null
+    id?: string
+    mission_id?: string | null
+    user_id?: string | null
     lettre_motivation?: string | null
     status?: string | null
     created_at?: Date | string | null
   }
 
   export type candidaturesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     lettre_motivation?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6327,39 +6187,41 @@ export namespace Prisma {
   }
 
   export type candidaturesUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    mission_id?: NullableIntFieldUpdateOperationsInput | number | null
-    user_id?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: StringFieldUpdateOperationsInput | string
+    mission_id?: NullableStringFieldUpdateOperationsInput | string | null
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
     lettre_motivation?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type candidaturesCreateManyInput = {
-    id?: number
-    mission_id?: number | null
-    user_id?: number | null
+    id?: string
+    mission_id?: string | null
+    user_id?: string | null
     lettre_motivation?: string | null
     status?: string | null
     created_at?: Date | string | null
   }
 
   export type candidaturesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     lettre_motivation?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type candidaturesUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    mission_id?: NullableIntFieldUpdateOperationsInput | number | null
-    user_id?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: StringFieldUpdateOperationsInput | string
+    mission_id?: NullableStringFieldUpdateOperationsInput | string | null
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
     lettre_motivation?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type freelance_cvsCreateInput = {
+    id?: string
     bio?: string | null
     skills?: freelance_cvsCreateskillsInput | string[]
     portfolio_url?: string | null
@@ -6369,8 +6231,8 @@ export namespace Prisma {
   }
 
   export type freelance_cvsUncheckedCreateInput = {
-    id?: number
-    user_id?: number | null
+    id?: string
+    user_id?: string | null
     bio?: string | null
     skills?: freelance_cvsCreateskillsInput | string[]
     portfolio_url?: string | null
@@ -6379,6 +6241,7 @@ export namespace Prisma {
   }
 
   export type freelance_cvsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: freelance_cvsUpdateskillsInput | string[]
     portfolio_url?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6388,8 +6251,8 @@ export namespace Prisma {
   }
 
   export type freelance_cvsUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    user_id?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: freelance_cvsUpdateskillsInput | string[]
     portfolio_url?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6398,8 +6261,8 @@ export namespace Prisma {
   }
 
   export type freelance_cvsCreateManyInput = {
-    id?: number
-    user_id?: number | null
+    id?: string
+    user_id?: string | null
     bio?: string | null
     skills?: freelance_cvsCreateskillsInput | string[]
     portfolio_url?: string | null
@@ -6408,6 +6271,7 @@ export namespace Prisma {
   }
 
   export type freelance_cvsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: freelance_cvsUpdateskillsInput | string[]
     portfolio_url?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6416,8 +6280,8 @@ export namespace Prisma {
   }
 
   export type freelance_cvsUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    user_id?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: freelance_cvsUpdateskillsInput | string[]
     portfolio_url?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6426,6 +6290,7 @@ export namespace Prisma {
   }
 
   export type missionsCreateInput = {
+    id?: string
     title: string
     description?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
@@ -6436,8 +6301,8 @@ export namespace Prisma {
   }
 
   export type missionsUncheckedCreateInput = {
-    id?: number
-    user_id?: number | null
+    id?: string
+    user_id?: string | null
     title: string
     description?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
@@ -6447,6 +6312,7 @@ export namespace Prisma {
   }
 
   export type missionsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -6457,8 +6323,8 @@ export namespace Prisma {
   }
 
   export type missionsUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    user_id?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -6468,8 +6334,8 @@ export namespace Prisma {
   }
 
   export type missionsCreateManyInput = {
-    id?: number
-    user_id?: number | null
+    id?: string
+    user_id?: string | null
     title: string
     description?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
@@ -6478,6 +6344,7 @@ export namespace Prisma {
   }
 
   export type missionsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -6486,8 +6353,8 @@ export namespace Prisma {
   }
 
   export type missionsUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    user_id?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -6496,6 +6363,7 @@ export namespace Prisma {
   }
 
   export type usersCreateInput = {
+    id?: string
     email: string
     password: string
     name: string
@@ -6507,7 +6375,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedCreateInput = {
-    id?: number
+    id?: string
     email: string
     password: string
     name: string
@@ -6519,6 +6387,7 @@ export namespace Prisma {
   }
 
   export type usersUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -6530,7 +6399,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -6542,7 +6411,7 @@ export namespace Prisma {
   }
 
   export type usersCreateManyInput = {
-    id?: number
+    id?: string
     email: string
     password: string
     name: string
@@ -6551,6 +6420,7 @@ export namespace Prisma {
   }
 
   export type usersUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -6559,7 +6429,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -6567,26 +6437,28 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type UuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidFilter<$PrismaModel> | string
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  export type UuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -6639,12 +6511,6 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
-  export type candidaturesAvgOrderByAggregateInput = {
-    id?: SortOrder
-    mission_id?: SortOrder
-    user_id?: SortOrder
-  }
-
   export type candidaturesMaxOrderByAggregateInput = {
     id?: SortOrder
     mission_id?: SortOrder
@@ -6663,42 +6529,34 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
-  export type candidaturesSumOrderByAggregateInput = {
-    id?: SortOrder
-    mission_id?: SortOrder
-    user_id?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+  export type UuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+  export type UuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -6751,11 +6609,6 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
-  export type freelance_cvsAvgOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
-  }
-
   export type freelance_cvsMaxOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
@@ -6772,11 +6625,6 @@ export namespace Prisma {
     portfolio_url?: SortOrder
     cv_url?: SortOrder
     created_at?: SortOrder
-  }
-
-  export type freelance_cvsSumOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6826,8 +6674,6 @@ export namespace Prisma {
   }
 
   export type missionsAvgOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
     price?: SortOrder
   }
 
@@ -6852,8 +6698,6 @@ export namespace Prisma {
   }
 
   export type missionsSumOrderByAggregateInput = {
-    id?: SortOrder
-    user_id?: SortOrder
     price?: SortOrder
   }
 
@@ -6920,10 +6764,6 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
-  export type usersAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type usersMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
@@ -6942,10 +6782,6 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
-  export type usersSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type missionsCreateNestedOneWithoutCandidaturesInput = {
     create?: XOR<missionsCreateWithoutCandidaturesInput, missionsUncheckedCreateWithoutCandidaturesInput>
     connectOrCreate?: missionsCreateOrConnectWithoutCandidaturesInput
@@ -6956,6 +6792,10 @@ export namespace Prisma {
     create?: XOR<usersCreateWithoutCandidaturesInput, usersUncheckedCreateWithoutCandidaturesInput>
     connectOrCreate?: usersCreateOrConnectWithoutCandidaturesInput
     connect?: usersWhereUniqueInput
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -6984,22 +6824,6 @@ export namespace Prisma {
     delete?: usersWhereInput | boolean
     connect?: usersWhereUniqueInput
     update?: XOR<XOR<usersUpdateToOneWithWhereWithoutCandidaturesInput, usersUpdateWithoutCandidaturesInput>, usersUncheckedUpdateWithoutCandidaturesInput>
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type freelance_cvsCreateskillsInput = {
@@ -7045,10 +6869,6 @@ export namespace Prisma {
     connectOrCreate?: candidaturesCreateOrConnectWithoutMissionsInput | candidaturesCreateOrConnectWithoutMissionsInput[]
     createMany?: candidaturesCreateManyMissionsInputEnvelope
     connect?: candidaturesWhereUniqueInput | candidaturesWhereUniqueInput[]
-  }
-
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
   }
 
   export type NullableDecimalFieldUpdateOperationsInput = {
@@ -7223,26 +7043,26 @@ export namespace Prisma {
     deleteMany?: missionsScalarWhereInput | missionsScalarWhereInput[]
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type NestedUuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidFilter<$PrismaModel> | string
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  export type NestedUuidNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -7270,7 +7090,21 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+  export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -7278,26 +7112,38 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export type NestedUuidNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -7305,23 +7151,7 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -7353,20 +7183,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type NestedStringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type NestedDecimalNullableFilter<$PrismaModel = never> = {
@@ -7414,6 +7230,7 @@ export namespace Prisma {
   }
 
   export type missionsCreateWithoutCandidaturesInput = {
+    id?: string
     title: string
     description?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
@@ -7423,8 +7240,8 @@ export namespace Prisma {
   }
 
   export type missionsUncheckedCreateWithoutCandidaturesInput = {
-    id?: number
-    user_id?: number | null
+    id?: string
+    user_id?: string | null
     title: string
     description?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
@@ -7438,6 +7255,7 @@ export namespace Prisma {
   }
 
   export type usersCreateWithoutCandidaturesInput = {
+    id?: string
     email: string
     password: string
     name: string
@@ -7448,7 +7266,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedCreateWithoutCandidaturesInput = {
-    id?: number
+    id?: string
     email: string
     password: string
     name: string
@@ -7475,6 +7293,7 @@ export namespace Prisma {
   }
 
   export type missionsUpdateWithoutCandidaturesInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -7484,8 +7303,8 @@ export namespace Prisma {
   }
 
   export type missionsUncheckedUpdateWithoutCandidaturesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    user_id?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -7505,6 +7324,7 @@ export namespace Prisma {
   }
 
   export type usersUpdateWithoutCandidaturesInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -7515,7 +7335,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedUpdateWithoutCandidaturesInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -7526,6 +7346,7 @@ export namespace Prisma {
   }
 
   export type usersCreateWithoutFreelance_cvsInput = {
+    id?: string
     email: string
     password: string
     name: string
@@ -7536,7 +7357,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedCreateWithoutFreelance_cvsInput = {
-    id?: number
+    id?: string
     email: string
     password: string
     name: string
@@ -7563,6 +7384,7 @@ export namespace Prisma {
   }
 
   export type usersUpdateWithoutFreelance_cvsInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -7573,7 +7395,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedUpdateWithoutFreelance_cvsInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -7584,6 +7406,7 @@ export namespace Prisma {
   }
 
   export type candidaturesCreateWithoutMissionsInput = {
+    id?: string
     lettre_motivation?: string | null
     status?: string | null
     created_at?: Date | string | null
@@ -7591,8 +7414,8 @@ export namespace Prisma {
   }
 
   export type candidaturesUncheckedCreateWithoutMissionsInput = {
-    id?: number
-    user_id?: number | null
+    id?: string
+    user_id?: string | null
     lettre_motivation?: string | null
     status?: string | null
     created_at?: Date | string | null
@@ -7609,6 +7432,7 @@ export namespace Prisma {
   }
 
   export type usersCreateWithoutMissionsInput = {
+    id?: string
     email: string
     password: string
     name: string
@@ -7619,7 +7443,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedCreateWithoutMissionsInput = {
-    id?: number
+    id?: string
     email: string
     password: string
     name: string
@@ -7654,9 +7478,9 @@ export namespace Prisma {
     AND?: candidaturesScalarWhereInput | candidaturesScalarWhereInput[]
     OR?: candidaturesScalarWhereInput[]
     NOT?: candidaturesScalarWhereInput | candidaturesScalarWhereInput[]
-    id?: IntFilter<"candidatures"> | number
-    mission_id?: IntNullableFilter<"candidatures"> | number | null
-    user_id?: IntNullableFilter<"candidatures"> | number | null
+    id?: UuidFilter<"candidatures"> | string
+    mission_id?: UuidNullableFilter<"candidatures"> | string | null
+    user_id?: UuidNullableFilter<"candidatures"> | string | null
     lettre_motivation?: StringNullableFilter<"candidatures"> | string | null
     status?: StringNullableFilter<"candidatures"> | string | null
     created_at?: DateTimeNullableFilter<"candidatures"> | Date | string | null
@@ -7674,6 +7498,7 @@ export namespace Prisma {
   }
 
   export type usersUpdateWithoutMissionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -7684,7 +7509,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedUpdateWithoutMissionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -7695,6 +7520,7 @@ export namespace Prisma {
   }
 
   export type candidaturesCreateWithoutUsersInput = {
+    id?: string
     lettre_motivation?: string | null
     status?: string | null
     created_at?: Date | string | null
@@ -7702,8 +7528,8 @@ export namespace Prisma {
   }
 
   export type candidaturesUncheckedCreateWithoutUsersInput = {
-    id?: number
-    mission_id?: number | null
+    id?: string
+    mission_id?: string | null
     lettre_motivation?: string | null
     status?: string | null
     created_at?: Date | string | null
@@ -7720,6 +7546,7 @@ export namespace Prisma {
   }
 
   export type freelance_cvsCreateWithoutUsersInput = {
+    id?: string
     bio?: string | null
     skills?: freelance_cvsCreateskillsInput | string[]
     portfolio_url?: string | null
@@ -7728,7 +7555,7 @@ export namespace Prisma {
   }
 
   export type freelance_cvsUncheckedCreateWithoutUsersInput = {
-    id?: number
+    id?: string
     bio?: string | null
     skills?: freelance_cvsCreateskillsInput | string[]
     portfolio_url?: string | null
@@ -7747,6 +7574,7 @@ export namespace Prisma {
   }
 
   export type missionsCreateWithoutUsersInput = {
+    id?: string
     title: string
     description?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
@@ -7756,7 +7584,7 @@ export namespace Prisma {
   }
 
   export type missionsUncheckedCreateWithoutUsersInput = {
-    id?: number
+    id?: string
     title: string
     description?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
@@ -7811,8 +7639,8 @@ export namespace Prisma {
     AND?: freelance_cvsScalarWhereInput | freelance_cvsScalarWhereInput[]
     OR?: freelance_cvsScalarWhereInput[]
     NOT?: freelance_cvsScalarWhereInput | freelance_cvsScalarWhereInput[]
-    id?: IntFilter<"freelance_cvs"> | number
-    user_id?: IntNullableFilter<"freelance_cvs"> | number | null
+    id?: UuidFilter<"freelance_cvs"> | string
+    user_id?: UuidNullableFilter<"freelance_cvs"> | string | null
     bio?: StringNullableFilter<"freelance_cvs"> | string | null
     skills?: StringNullableListFilter<"freelance_cvs">
     portfolio_url?: StringNullableFilter<"freelance_cvs"> | string | null
@@ -7840,8 +7668,8 @@ export namespace Prisma {
     AND?: missionsScalarWhereInput | missionsScalarWhereInput[]
     OR?: missionsScalarWhereInput[]
     NOT?: missionsScalarWhereInput | missionsScalarWhereInput[]
-    id?: IntFilter<"missions"> | number
-    user_id?: IntNullableFilter<"missions"> | number | null
+    id?: UuidFilter<"missions"> | string
+    user_id?: UuidNullableFilter<"missions"> | string | null
     title?: StringFilter<"missions"> | string
     description?: StringNullableFilter<"missions"> | string | null
     price?: DecimalNullableFilter<"missions"> | Decimal | DecimalJsLike | number | string | null
@@ -7850,14 +7678,15 @@ export namespace Prisma {
   }
 
   export type candidaturesCreateManyMissionsInput = {
-    id?: number
-    user_id?: number | null
+    id?: string
+    user_id?: string | null
     lettre_motivation?: string | null
     status?: string | null
     created_at?: Date | string | null
   }
 
   export type candidaturesUpdateWithoutMissionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
     lettre_motivation?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7865,31 +7694,31 @@ export namespace Prisma {
   }
 
   export type candidaturesUncheckedUpdateWithoutMissionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    user_id?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
     lettre_motivation?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type candidaturesUncheckedUpdateManyWithoutMissionsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    user_id?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
     lettre_motivation?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type candidaturesCreateManyUsersInput = {
-    id?: number
-    mission_id?: number | null
+    id?: string
+    mission_id?: string | null
     lettre_motivation?: string | null
     status?: string | null
     created_at?: Date | string | null
   }
 
   export type freelance_cvsCreateManyUsersInput = {
-    id?: number
+    id?: string
     bio?: string | null
     skills?: freelance_cvsCreateskillsInput | string[]
     portfolio_url?: string | null
@@ -7898,7 +7727,7 @@ export namespace Prisma {
   }
 
   export type missionsCreateManyUsersInput = {
-    id?: number
+    id?: string
     title: string
     description?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
@@ -7907,6 +7736,7 @@ export namespace Prisma {
   }
 
   export type candidaturesUpdateWithoutUsersInput = {
+    id?: StringFieldUpdateOperationsInput | string
     lettre_motivation?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7914,22 +7744,23 @@ export namespace Prisma {
   }
 
   export type candidaturesUncheckedUpdateWithoutUsersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    mission_id?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: StringFieldUpdateOperationsInput | string
+    mission_id?: NullableStringFieldUpdateOperationsInput | string | null
     lettre_motivation?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type candidaturesUncheckedUpdateManyWithoutUsersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    mission_id?: NullableIntFieldUpdateOperationsInput | number | null
+    id?: StringFieldUpdateOperationsInput | string
+    mission_id?: NullableStringFieldUpdateOperationsInput | string | null
     lettre_motivation?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type freelance_cvsUpdateWithoutUsersInput = {
+    id?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: freelance_cvsUpdateskillsInput | string[]
     portfolio_url?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7938,7 +7769,7 @@ export namespace Prisma {
   }
 
   export type freelance_cvsUncheckedUpdateWithoutUsersInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: freelance_cvsUpdateskillsInput | string[]
     portfolio_url?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7947,7 +7778,7 @@ export namespace Prisma {
   }
 
   export type freelance_cvsUncheckedUpdateManyWithoutUsersInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     skills?: freelance_cvsUpdateskillsInput | string[]
     portfolio_url?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7956,6 +7787,7 @@ export namespace Prisma {
   }
 
   export type missionsUpdateWithoutUsersInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -7965,7 +7797,7 @@ export namespace Prisma {
   }
 
   export type missionsUncheckedUpdateWithoutUsersInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -7975,7 +7807,7 @@ export namespace Prisma {
   }
 
   export type missionsUncheckedUpdateManyWithoutUsersInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null

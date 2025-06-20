@@ -1,18 +1,21 @@
 {
-  "name": "@monorepo/world-service",
+  "name": "@monorepo/messaging-service",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "ts-node-dev --respawn src/main.ts",
-    "build": "tsc -b",
+    "build": "tsc -p tsconfig.json",
     "start": "node dist/main.js"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.0",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.0",
-    "@nestjs/microservices": "^11.1.1",
+    "@nestjs/platform-socket.io": "^11.1.3",
+    "@nestjs/websockets": "^11.1.3",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.0.0"
+    "rxjs": "^7.0.0",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "@types/node": "^22.15.21",

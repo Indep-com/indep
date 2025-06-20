@@ -4,6 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MissionController } from './mission/mission.controller';
 import { MissionProxyService } from './mission/mission-proxy.service';
+import { UtilisateurModule } from './utilisateur/utilisateur.module';
+import {AuthModule} from "./auth/auth.module";
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { MissionProxyService } from './mission/mission-proxy.service';
         options: { host: 'world-service', port: 4002 },
       },*/
     ]),
+    UtilisateurModule,
+    AuthModule
   ],
   controllers: [AppController, MissionController],
   providers: [AppService, MissionProxyService],
