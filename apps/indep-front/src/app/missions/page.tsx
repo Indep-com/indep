@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import './page.css'
 
 type Mission = {
   id: number
@@ -23,33 +24,22 @@ export default function MissionsPage() {
   }, [])
 
   return (
-    <main style={{ padding: '2rem' }}>
-      <h1>Missions disponibles</h1>
+    <main className="missions-container">
+      <h1 className="missions-heading">Missions disponibles</h1>
 
-      <ul style={{ marginBottom: '2rem' }}>
+      <ul className="missions-list">
         {missions.map(mission => (
-          <li key={mission.id}>
+          <li key={mission.id} className="mission-card">
             <h3>{mission.title}</h3>
             <p>{mission.description}</p>
             <p><strong>Prix :</strong> {mission.price} €</p>
             <p><em>Status :</em> {mission.status}</p>
-            <hr />
           </li>
         ))}
       </ul>
 
-      <button
-        onClick={() => router.push('/missions/create')}
-        style={{
-          padding: '10px 20px',
-          backgroundColor: '#0070f3',
-          color: 'white',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-        }}
-      >
-         Ajouter une mission
+      <button className="add-mission-btn" onClick={() => router.push('/missions/create')}>
+        Ajouter une mission
       </button>
     </main>
   )
