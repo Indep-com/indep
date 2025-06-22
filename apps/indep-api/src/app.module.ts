@@ -6,6 +6,8 @@ import { MissionController } from './mission/mission.controller';
 import { MissionProxyService } from './mission/mission-proxy.service';
 import { UtilisateurModule } from './utilisateur/utilisateur.module';
 import {AuthModule} from "./auth/auth.module";
+import { CandidatureModule } from './candidature/candidature.module';
+
 
 @Module({
   imports: [
@@ -22,7 +24,8 @@ import {AuthModule} from "./auth/auth.module";
       },*/
     ]),
     UtilisateurModule,
-    AuthModule
+    AuthModule,
+    CandidatureModule,
   ],
   controllers: [AppController, MissionController],
   providers: [AppService, MissionProxyService],
