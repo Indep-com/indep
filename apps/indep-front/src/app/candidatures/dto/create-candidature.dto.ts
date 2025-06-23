@@ -1,13 +1,15 @@
 import { IsUUID, IsOptional, IsString } from 'class-validator';
 
 export class CreateCandidatureDto {
-  @IsUUID()
-  mission_id: string;
-
-  @IsUUID()
-  user_id: string;
-
-  @IsOptional()
   @IsString()
-  lettre_motivation?: string;
+  @IsNotEmpty()
+  mission_id: string
+
+  @IsString()
+  @IsNotEmpty()
+  user_id: string
+
+  @IsString()
+  @IsOptional()
+  lettre_motivation?: string
 }
