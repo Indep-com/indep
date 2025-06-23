@@ -7,27 +7,33 @@ import { UpdateUtilisateurDto } from './dto/update-utilisateur.dto';
 export class UtilisateurController {
   constructor(private readonly utilisateurService: UtilisateurService) {}
 
-  @Post()
-  create(@Body() createUtilisateurDto: CreateUtilisateurDto) {
+  @Post('/creerUtilisateur')
+  creerUtilisateur(@Body() createUtilisateurDto: CreateUtilisateurDto) {
+    console.log('Reçu dans creerUtilisateur:', createUtilisateurDto);
     return this.utilisateurService.create(createUtilisateurDto);
   }
 
-  @Get()
+  @Get('/recupererToutUtilisateur')
   findAll() {
     return this.utilisateurService.findAll();
   }
 
-  @Get(':id')
+  @Get(':id/recupererUnUtilisateurParId')
   findOne(@Param('id') id: string) {
     return this.utilisateurService.findOne(id);
   }
 
-  @Patch(':id')
+  @Get(':email/recupererUnUtilisateurParEmail')
+  findOneByEmail(@Param('email') email: string) {
+    return this.utilisateurService.findOneByEmail(email);
+  }
+
+  @Patch(':id/modifierUtilisateurParId')
   update(@Param('id') id: string, @Body() updateUtilisateurDto: UpdateUtilisateurDto) {
     return this.utilisateurService.update(id, updateUtilisateurDto);
   }
 
-  @Delete(':id')
+  @Delete(':id/supprimerUtilisateurParId')
   remove(@Param('id') id: string) {
     return this.utilisateurService.remove(id);
   }

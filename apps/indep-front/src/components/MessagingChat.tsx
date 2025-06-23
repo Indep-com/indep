@@ -15,7 +15,7 @@ export default function Chat({ senderId, recipientId }: { senderId: string; reci
   const [text, setText] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:3001/messages?senderId=${senderId}&recipientId=${recipientId}`)
+    fetch(`http://localhost:4002/messages?senderId=${senderId}&recipientId=${recipientId}`)
       .then((res) => res.json())
       .then((data) => setMessages(data));
   }, [senderId, recipientId]);

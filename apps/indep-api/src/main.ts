@@ -6,6 +6,12 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // 👇 Ajoute ceci pour autoriser le frontend (port 3001)
+  app.enableCors({
+    origin: 'http://localhost:3001',
+    credentials: true,
+  });
+
   const config = new DocumentBuilder()
     .setTitle('Nom de ton API')
     .setDescription('Documentation Swagger de ton API')
