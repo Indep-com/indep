@@ -12,6 +12,7 @@ type Mission = {
   status: string
 }
 
+
 export default function MissionsPage() {
   const [missions, setMissions] = useState<Mission[]>([])
   const router = useRouter()

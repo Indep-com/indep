@@ -2,34 +2,61 @@
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
+import { jwtDecode } from 'jwt-decode'
 
 type Mission = {
   id: string
   title: string
   description: string
-  price: number
+  price: string
   status: string
+}
+
+type JwtPayload = {
+  sub: string
+  email: string
+  role: string
+  iat: number
+  exp: number
 }
 
 export default function MissionDetailPage() {
   const [mission, setMission] = useState<Mission | null>(null)
   const [loading, setLoading] = useState(true)
   const [message, setMessage] = useState('')
+  const [motivation, setMotivation] = useState('')
+  const [isFreelance, setIsFreelance] = useState(false)
   const params = useParams()
 
-  // 🔧 Mock du rôle pour test local
-  const userRole = 'freelance'
-  console.log('params.id =', params.id, ' (type: ', typeof params.id, ')')
+  // Supprimer manuellement le token
+  const handleClear = () => {
+    localStorage.removeItem('authToken')
+    alert('✅ authToken supprimé du localStorage')
+    location.reload()
+  }
 
   useEffect(() => {
+    // Décodage du JWT
+    const token = localStorage.getItem('authToken')
+    if (token) {
+      try {
+        const decodedToken = jwtDecode<JwtPayload>(token)
+        if (decodedToken.role === 'freelance') {
+          setIsFreelance(true)
+        }
+      } catch (err) {
+        console.error('❌ Erreur lors du décodage du token :', err)
+      }
+    }
+
+    // Récupération de la mission
     const fetchMission = async () => {
       try {
         const res = await fetch(`http://localhost:3000/missions/${params.id}`)
         const data = await res.json()
-        console.log('Mission reçue :', data)
         setMission(data)
       } catch (err) {
-        console.error('Erreur fetch mission:', err)
+        console.error('❌ Erreur lors du fetch de la mission :', err)
       } finally {
         setLoading(false)
       }
@@ -39,28 +66,38 @@ export default function MissionDetailPage() {
   }, [params.id])
 
   const handleCandidature = async () => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('authToken')
+    if (!token) return setMessage('❌ Token manquant.')
+
+    let userId: string
+    try {
+      const decodedToken = jwtDecode<JwtPayload>(token)
+      userId = decodedToken.sub
+    } catch (err) {
+      return setMessage('❌ Token invalide.')
+    }
+
+    const payload = {
+      mission_id: mission?.id,
+      user_id: userId,
+      lettre_motivation: motivation,
+    }
 
     try {
       const res = await fetch('http://localhost:3000/candidatures', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          mission_id: params.id,
-          lettre_motivation: 'Je suis motivé !',
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       })
 
       if (res.ok) {
         setMessage('🎉 Candidature envoyée avec succès !')
       } else {
-        setMessage('❌ Erreur lors de la candidature.')
+        const err = await res.json()
+        setMessage(`❌ Erreur : ${err.message || 'Serveur'}`)
       }
     } catch (err) {
-      console.error(err)
+      console.error('❌ Erreur réseau :', err)
       setMessage('❌ Erreur réseau.')
     }
   }
@@ -75,11 +112,30 @@ export default function MissionDetailPage() {
       <p><strong>Prix :</strong> {mission.price} €</p>
       <p><strong>Status :</strong> {mission.status}</p>
 
-      {userRole === 'freelance' && (
-        <button onClick={handleCandidature}>Candidater</button>
+      {isFreelance && (
+        <>
+          <textarea
+            placeholder="Votre lettre de motivation..."
+            value={motivation}
+            onChange={e => setMotivation(e.target.value)}
+            rows={4}
+            style={{ width: '100%', marginTop: '1rem' }}
+          />
+          <button onClick={handleCandidature} style={{ marginTop: '1rem' }}>
+            Candidater
+          </button>
+        </>
       )}
 
-      {message && <p style={{ marginTop: '1rem' }}>{message}</p>}
+      <button onClick={handleClear} style={{ marginTop: '1rem', marginLeft: '1rem' }}>
+        Supprimer le authToken
+      </button>
+
+      {message && (
+        <p style={{ marginTop: '1rem', color: message.startsWith('🎉') ? 'green' : 'red' }}>
+          {message}
+        </p>
+      )}
     </main>
   )
 }
