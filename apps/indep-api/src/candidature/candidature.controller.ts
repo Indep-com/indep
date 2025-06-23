@@ -1,6 +1,6 @@
-// apps/indep-api/src/candidature/candidature.controller.ts
 import { Controller, Get, Post, Param, Body, Patch, Delete } from '@nestjs/common';
 import { CandidatureProxyService } from './candidature-proxy.service';
+import { CreateCandidatureDto } from '../candidature/dto/create-candidature.dto';
 
 @Controller('candidatures')
 export class CandidatureController {
@@ -17,16 +17,9 @@ export class CandidatureController {
   }
 
   @Post()
-  create(@Body() data: any) {
-    const payload = {
-      user_id: data.userId,
-      mission_id: data.missionId,
-      lettre_motivation: data.motivation,
-    };
-  
-    return this.service.create(payload);
+  create(@Body() dto: CreateCandidatureDto) {
+    return this.service.create(dto);
   }
-  
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() data: any) {

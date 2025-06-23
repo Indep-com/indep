@@ -1,4 +1,10 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Req,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
@@ -17,6 +23,16 @@ export class AuthController {
       message: result.message,
       token: result.access_token,
     };
+  }
+  @Post('logout')
+  async logout(@Req() req: Request) {
+    const authHeader = req.headers['authorization'];
+    if (!authHeader) throw new UnauthorizedException('Token manquant');
+
+    const token = authHeader.replace('Bearer ', '');
+    await this.authService.logout(token);
+
+    return { message: 'Déconnecté avec succès' };
   }
 
   @Post('register')
