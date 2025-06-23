@@ -6,6 +6,7 @@ import { MissionController } from './mission/mission.controller';
 import { MissionProxyService } from './mission/mission-proxy.service';
 import { UtilisateurModule } from './utilisateur/utilisateur.module';
 import {AuthModule} from "./auth/auth.module";
+import {ConfigModule} from "@nestjs/config";
 import { CandidatureModule } from './candidature/candidature.module';
 
 
@@ -26,7 +27,8 @@ import { CandidatureModule } from './candidature/candidature.module';
     UtilisateurModule,
     AuthModule,
     CandidatureModule,
-    AuthModule
+    AuthModule,
+    ConfigModule.forRoot({})
   ],
   controllers: [AppController, MissionController],
   providers: [AppService, MissionProxyService],

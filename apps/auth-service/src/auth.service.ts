@@ -16,18 +16,16 @@ export class AuthService {
     const passwordIsValid = await bcrypt.compare(password, utilisateur.password);
 
     if (email !== utilisateur.email || !passwordIsValid) {
-      console.log('Je suis auth service');
-      if (email !== utilisateur.email || password !== utilisateur.password) {
-        throw new UnauthorizedException('Invalid credentials');
-      }
-
-      const payload = {sub: utilisateur.id, email: utilisateur.email, role: utilisateur.role,};
-      return {
-        message: 'Authentification réussie',
-        access_token: this.jwtService.sign(payload),
-      };
+      throw new UnauthorizedException('Invalid credentials');
     }
+
+    const payload = { sub: utilisateur.id, email: utilisateur.email,  role: utilisateur.role, };
+    return {
+      message: 'Authentification réussie',
+      access_token: this.jwtService.sign(payload),
+    };
   }
+
   async register(utilisateurModel: UtilisateurModel) {
     await this.utilisateurClientService.inscrireUnUtilisateur(utilisateurModel);
 
@@ -40,6 +38,8 @@ export class AuthService {
       access_token: token,
     };
   }
+
+
   async verify(token: string) {
     try {
       return this.jwtService.verify(token);
