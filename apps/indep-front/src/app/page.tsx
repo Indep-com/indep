@@ -52,24 +52,24 @@ export default function Page() {
             )}
           </header>
 
-          <div className="cards-section">
-            <div className="column">
-              <Link href="/missions">
-                <h2 style={{ cursor: 'pointer' }}>Mission</h2>
-              </Link>
-              <div className="card"><p>Mission<br />Mission</p></div>
-              <div className="card"><p>Mission<br />Mission</p></div>
-              <div className="card"><p>Mission<br />Mission</p></div>
-            </div>
+        <div className="cards-section">
+          <div className="column">
+          <Link href="/missions">
+            <h2 style={{ cursor: 'pointer' }}>Mission</h2>
+          </Link>
+            <div className="card"><p>Mission<br />Mission</p></div>
+            <div className="card"><p>Mission<br />Mission</p></div>
+            <div className="card"><p>Mission<br />Mission</p></div>
+          </div>
 
-            <div className="column">
-              <h2>Freelance</h2>
-              <div className="card"><p>Mission<br />Mission</p></div>
-              <div className="card"><p>Mission<br />Mission</p></div>
-              <div className="card"><p>Mission<br />Mission</p></div>
-            </div>
+          <div className="column">
+            <h2>Freelance</h2>
+            <div className="card"><p>Mission<br />Mission</p></div>
+            <div className="card"><p>Mission<br />Mission</p></div>
+            <div className="card"><p>Mission<br />Mission</p></div>
           </div>
         </div>
       </div>
+    </div>
   );
 }
