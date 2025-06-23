@@ -11,6 +11,7 @@ export class AuthController {
 
   @MessagePattern('auth.login')
   async login(data: LoginDto) {
+    console.log(data);
     return this.authService.login(data);
   }
 

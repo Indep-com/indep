@@ -16,6 +16,8 @@ export class AuthService {
     const passwordIsValid = await bcrypt.compare(password, utilisateur.password);
 
     if (email !== utilisateur.email || !passwordIsValid) {
+    console.log('Je suis auth service');
+    if (email !== utilisateur.email || password !== utilisateur.password) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
