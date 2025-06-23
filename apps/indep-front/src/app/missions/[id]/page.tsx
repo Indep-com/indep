@@ -74,8 +74,9 @@ export default function MissionDetailPage() {
       const decodedToken = jwtDecode<JwtPayload>(token)
       userId = decodedToken.sub
     } catch (err) {
-      return setMessage('❌ Token invalide.')
-    }
+        console.error('Erreur de décodage token :', err)
+        return setMessage('❌ Token invalide.')
+      }      
 
     const payload = {
       mission_id: mission?.id,
