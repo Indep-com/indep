@@ -13,10 +13,6 @@ export class AuthService {
     const observable = this.authClient.send('auth.login', { email, password });
     return await lastValueFrom(observable);
   }
-  async logout(token: string): Promise<void> {
-    const observable = this.authClient.send('auth.logout', { token });
-    await lastValueFrom(observable);
-  }
   async register(registerDto: RegisterDto) {
     const observable = this.authClient.send('auth.register', registerDto);
     return await lastValueFrom(observable);

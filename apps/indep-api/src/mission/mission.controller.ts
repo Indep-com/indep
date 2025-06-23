@@ -13,7 +13,7 @@ export class MissionController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.missionService.findOne(id);
+    return this.missionService.findOne(+id);
   }
 
   @Post()
@@ -23,11 +23,11 @@ export class MissionController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() dto: any) {
-    return this.missionService.update(id, dto);
+    return this.missionService.update(+id, dto);
   }
 
   @Delete(':id')
   delete(@Param('id') id: string) {
-    return this.missionService.delete(id);
+    return this.missionService.delete(+id);
   }
 }
