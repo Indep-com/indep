@@ -24,7 +24,7 @@ const LoginPage = () => {
 
             localStorage.setItem('authToken', token);
             router.push('/');
-        } catch (error) {
+        } catch (error: any) {
             setMessage(
                 'Erreur de connexion : ' +
                 (error?.response?.data?.message || 'Erreur inconnue')
