@@ -17,37 +17,40 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="layout">
-      <aside className="sidebar">
-        <div className="profile-button">profil</div>
-        <Link href="/candidatures" className="sidebar-link">Mes candidatures1</Link>
-        <Link href="/candidatures" className="sidebar-link">Mes candidatures2</Link>
-        <Link href="/candidatures" className="sidebar-link">Mes candidatures3</Link>
-      </aside>
+      <div className="layout">
+        <aside className="sidebar">
+          <div className="profile-button">profil</div>
+          <Link href="/candidatures" className="sidebar-link">Mes candidatures1</Link>
+          <Link href="/candidatures" className="sidebar-link">Mes candidatures2</Link>
+          <Link href="/candidatures" className="sidebar-link">Mes candidatures3</Link>
+        </aside>
 
-      <div className="main-content">
-        <header className={`header ${scrolled ? 'shrink' : ''}`}>
-          <h1>INDEP.COM</h1>
-        </header>
+        <div className="main-content">
+          <header className={`header ${scrolled ? 'shrink' : ''}`}>
+            <h1 style={{ flex: 1 }}>INDEP.COM</h1>
+            <Link href="/authentification" className="login-button">
+              Connexion
+            </Link>
+          </header>
 
-        <div className="cards-section">
-          <div className="column">
-          <Link href="/missions">
-            <h2 style={{ cursor: 'pointer' }}>Mission</h2>
-          </Link>
-            <div className="card"><p>Mission<br />Mission</p></div>
-            <div className="card"><p>Mission<br />Mission</p></div>
-            <div className="card"><p>Mission<br />Mission</p></div>
-          </div>
+          <div className="cards-section">
+            <div className="column">
+              <Link href="/missions">
+                <h2 style={{ cursor: 'pointer' }}>Mission</h2>
+              </Link>
+              <div className="card"><p>Mission<br />Mission</p></div>
+              <div className="card"><p>Mission<br />Mission</p></div>
+              <div className="card"><p>Mission<br />Mission</p></div>
+            </div>
 
-          <div className="column">
-            <h2>Freelance</h2>
-            <div className="card"><p>Mission<br />Mission</p></div>
-            <div className="card"><p>Mission<br />Mission</p></div>
-            <div className="card"><p>Mission<br />Mission</p></div>
+            <div className="column">
+              <h2>Freelance</h2>
+              <div className="card"><p>Mission<br />Mission</p></div>
+              <div className="card"><p>Mission<br />Mission</p></div>
+              <div className="card"><p>Mission<br />Mission</p></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   );
 }
