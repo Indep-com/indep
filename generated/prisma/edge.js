@@ -35,12 +35,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.10.1
- * Query Engine version: 9b628578b3b7cae625e8c927178f15a170e74a9c
+ * Prisma Client JS version: 6.10.0
+ * Query Engine version: aee10d5a411e4360c6d3445ce4810ca65adbf3e8
  */
 Prisma.prismaVersion = {
-  client: "6.10.1",
-  engine: "9b628578b3b7cae625e8c927178f15a170e74a9c"
+  client: "6.10.0",
+  engine: "aee10d5a411e4360c6d3445ce4810ca65adbf3e8"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -163,7 +163,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/adel/Desktop/bureau/Ynov/indep/generated/prisma",
+      "value": "/home/enea/projets/m2/indep/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -172,12 +172,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "debian-openssl-3.0.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/adel/Desktop/bureau/Ynov/indep/prisma/schema.prisma",
+    "sourceFilePath": "/home/enea/projets/m2/indep/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -185,8 +185,8 @@ const config = {
     "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma",
-  "clientVersion": "6.10.1",
-  "engineVersion": "9b628578b3b7cae625e8c927178f15a170e74a9c",
+  "clientVersion": "6.10.0",
+  "engineVersion": "aee10d5a411e4360c6d3445ce4810ca65adbf3e8",
   "datasourceNames": [
     "db"
   ],

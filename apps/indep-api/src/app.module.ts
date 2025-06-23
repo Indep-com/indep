@@ -26,6 +26,7 @@ import { CandidatureModule } from './candidature/candidature.module';
     UtilisateurModule,
     AuthModule,
     CandidatureModule,
+    AuthModule
   ],
   controllers: [AppController, MissionController],
   providers: [AppService, MissionProxyService],
