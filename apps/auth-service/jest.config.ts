@@ -8,7 +8,7 @@ const config: Config = {
   rootDir: ".",
   globals: {
     "ts-jest": {
-      tsconfig: "./tsconfig.base.json",
+      tsconfig: "./tsconfig.json",
     },
   },
 };
