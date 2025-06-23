@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import axios from 'axios';
 import {useRouter} from "next/navigation";
+import axios from "axios";
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
