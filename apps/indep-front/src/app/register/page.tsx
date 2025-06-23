@@ -27,7 +27,8 @@ const RegisterPage = () => {
             localStorage.setItem('authToken', token);
             router.push('/');
         } catch (err) {
-            setMessage('Erreur réseau.');
+            console.error(err)
+            alert('Erreur réseau.')
         }
     };
 
