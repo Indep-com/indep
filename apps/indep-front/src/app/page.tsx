@@ -3,9 +3,12 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import './page.css';
+import {useRouter} from "next/navigation";
 
 export default function Page() {
   const [scrolled, setScrolled] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => {
@@ -15,6 +18,16 @@ export default function Page() {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    setIsAuthenticated(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    router.push('/log-out');
+  };
 
   return (
       <div className="layout">
@@ -28,9 +41,15 @@ export default function Page() {
         <div className="main-content">
           <header className={`header ${scrolled ? 'shrink' : ''}`}>
             <h1 style={{ flex: 1 }}>INDEP.COM</h1>
-            <Link href="/login" className="login-button">
-              Connexion
-            </Link>
+            {!isAuthenticated ? (
+                <Link href="/login" className="login-button">
+                  Connexion
+                </Link>
+            ) : (
+                <button onClick={handleLogout} className="login-button">
+                    Déconnecter
+                </button>
+            )}
           </header>
 
           <div className="cards-section">

@@ -163,7 +163,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/enea/projets/m2/webService/indep/generated/prisma",
+      "value": "/home/enea/projets/m2/indep/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -172,7 +172,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-1.1.x",
+        "value": "debian-openssl-3.0.x",
         "native": true
       },
       {
@@ -181,11 +181,12 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/enea/projets/m2/webService/indep/prisma/schema.prisma",
+    "sourceFilePath": "/home/enea/projets/m2/indep/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma",
   "clientVersion": "6.10.1",

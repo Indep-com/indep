@@ -7,8 +7,7 @@ import axios from 'axios';
 const RegisterPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [nom, setNom] = useState('');
-    const [prenom, setPrenom] = useState('');
+    const [name, setName] = useState('');
     const [message, setMessage] = useState('');
     const router = useRouter();
 
@@ -20,16 +19,15 @@ const RegisterPage = () => {
             const response = await axios.post('http://localhost:3000/auth/register', {
                 email,
                 password,
-                nom,
-                prenom,
+                name,
             });
 
             const token = response.data.token;
+
             localStorage.setItem('authToken', token);
             router.push('/');
         } catch (err) {
-            console.error(err);
-            alert('Erreur lors de l’inscription.');
+            setMessage('Erreur réseau.');
         }
     };
 
@@ -38,22 +36,13 @@ const RegisterPage = () => {
             <h2>Inscription</h2>
             <form onSubmit={handleRegister}>
                 <div style={{ marginBottom: '1rem' }}>
-                    <label>Nom :</label>
+                    <label>Nom complet :</label>
                     <input
                         type="text"
-                        value={nom}
-                        onChange={(e) => setNom(e.target.value)}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         required
-                        style={{ width: '100%' }}
-                    />
-                </div>
-                <div style={{ marginBottom: '1rem' }}>
-                    <label>Prénom :</label>
-                    <input
-                        type="text"
-                        value={prenom}
-                        onChange={(e) => setPrenom(e.target.value)}
-                        required
+                        placeholder="Prénom Nom"
                         style={{ width: '100%' }}
                     />
                 </div>
@@ -77,10 +66,11 @@ const RegisterPage = () => {
                         style={{ width: '100%' }}
                     />
                 </div>
-                <button type="submit">S’inscrire</button>
+
+                <button type="submit">S'inscrire</button>
             </form>
 
-            {message && <p>{message}</p>}
+            {message && <p style={{ color: 'red' }}>{message}</p>}
         </div>
     );
 };
