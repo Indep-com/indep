@@ -163,7 +163,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/adel/Desktop/bureau/Ynov/indep/generated/prisma",
+      "value": "/home/enea/projets/m2/indep/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -172,7 +172,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "debian-openssl-3.0.x",
         "native": true
       },
       {
@@ -181,7 +181,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/adel/Desktop/bureau/Ynov/indep/prisma/schema.prisma",
+    "sourceFilePath": "/home/enea/projets/m2/indep/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

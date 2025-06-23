@@ -10,6 +10,8 @@ export class AuthService {
   constructor(private readonly jwtService: JwtService,
               private readonly utilisateurClientService: UtilisateurClientService,) {}
 
+  private blacklistedTokens = new Set<string>();
+
   async login({ email, password }: LoginDto) {
     const utilisateur: UtilisateurModel = await this.utilisateurClientService.utilisateurParEmail(email);
 
@@ -37,6 +39,14 @@ export class AuthService {
     return {
       access_token: token,
     };
+  }
+
+  async invalidateToken(token: string): Promise<void> {
+    this.blacklistedTokens.add(token);
+  }
+
+  isTokenInvalidated(token: string): boolean {
+    return this.blacklistedTokens.has(token);
   }
 
 

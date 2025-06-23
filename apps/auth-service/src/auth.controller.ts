@@ -14,6 +14,15 @@ export class AuthController {
     return this.authService.login(data);
   }
 
+  @MessagePattern('auth.logout')
+  async handleLogout(data: { token: string }) {
+    const {token} = data;
+
+    await this.authService.invalidateToken(token);
+
+    return;
+  }
+
   @MessagePattern('auth.register')
   async register(data: UtilisateurModel) {
     return this.authService.register(data);
