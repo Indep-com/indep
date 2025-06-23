@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Param, Body, Patch, Delete } from '@nestjs/common';
 import { CandidatureProxyService } from './candidature-proxy.service';
-import { CreateCandidatureDto } from '../../../indep-front/src/app/candidatures/dto/create-candidature.dto';
+import { CreateCandidatureDto } from './dto/create-candidature.dto';
 
 @Controller('candidatures')
 export class CandidatureController {
