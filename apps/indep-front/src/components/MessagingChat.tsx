@@ -18,6 +18,10 @@ export default function Chat({ senderId, recipientId }: { senderId: string; reci
     fetch(`http://localhost:3001/messages?senderId=${senderId}&recipientId=${recipientId}`)
       .then((res) => res.json())
       .then((data) => setMessages(data));
+  }, [senderId, recipientId]);
+
+  useEffect(() => {
+    if (!socket) return;
 
     socket.on('newMessage', (msg: Message) => {
       const relevant = [msg.senderId, msg.recipientId].includes(senderId);
@@ -29,10 +33,17 @@ export default function Chat({ senderId, recipientId }: { senderId: string; reci
     return () => {
       socket.off('newMessage');
     };
-  }, [senderId, recipientId]);
+  }, [senderId]);
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     const message: Message = { senderId, recipientId, message: text };
+
+    await fetch('http://localhost:3000/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(message),
+    });
+
     socket.emit('sendMessage', message);
     setText('');
   };

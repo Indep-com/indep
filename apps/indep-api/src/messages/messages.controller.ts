@@ -1,32 +1,56 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { PrismaService } from '../../../../prisma/prisma.service';
-import { Message } from '@prisma/client';
-import { Prisma } from '@prisma/client';
+import { PrismaMessagingService } from './prisma-messaging.service';
+
+interface Message {
+  id: string;
+  senderId: string;
+  recipientId: string;
+  message: string;
+  timestamp: Date;
+}
 
 @Controller('messages')
 export class MessagesController {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaMessagingService) {}
 
   @Get()
   async getMessages(
     @Query('senderId') senderId?: string,
     @Query('recipientId') recipientId?: string,
   ): Promise<Message[]> {
-    const where: Prisma.MessageWhereInput = {};
-
+    const where: { senderId?: string; recipientId?: string } = {};
     if (senderId) {
       where.senderId = senderId;
     }
-
     if (recipientId) {
       where.recipientId = recipientId;
     }
+    //or sender in receipient and receipient in sender
 
-    return this.prisma.message.findMany({
+    return await this.prisma.message.findMany({
       where,
-      orderBy: {
-        timestamp: 'desc',
+      orderBy: { timestamp: 'asc' },
+    });
+  }
+
+  @Get('/conversations')
+  async getConversations(@Query('userId') userId: string): Promise<Message[]> {
+    if (!userId) {
+      throw new Error('User ID is required');
+    }
+
+    return await this.prisma.message.findMany({
+      where: {
+        OR: [{ senderId: userId }, { recipientId: userId }],
       },
+      orderBy: { timestamp: 'asc' },
+    });
+  }
+
+  @Get('/all')
+  async getAllMessages(): Promise<Message[]> {
+    return await this.prisma.message.findMany({
+      orderBy: { timestamp: 'desc' },
     });
   }
 }
