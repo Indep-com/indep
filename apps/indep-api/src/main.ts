@@ -17,6 +17,7 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document);
 
   await app.listen(3000);
+
   console.log('🚀 indep-Api listening on http://localhost:3000');
 }
 bootstrap();
