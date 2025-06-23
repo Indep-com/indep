@@ -24,21 +24,9 @@ const LoginPage = () => {
 
             localStorage.setItem('authToken', token);
             router.push('/');
-        } catch (error) {
-            if (
-                typeof error === 'object' &&
-                error !== null &&
-                'response' in error &&
-                typeof (error as any).response === 'object' &&
-                (error as any).response !== null &&
-                'data' in (error as any).response &&
-                typeof (error as any).response.data === 'object' &&
-                'message' in (error as any).response.data
-            ) {
-                setMessage('Erreur de connexion : ' + (error as any).response.data.message);
-            } else {
-                setMessage('Erreur de connexion : Erreur inconnue');
-            }
+        } catch (err) {
+            console.error(err)
+            alert('Erreur réseau.')
         }
     };
 
