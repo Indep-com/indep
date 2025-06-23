@@ -8,7 +8,7 @@ async function bootstrap() {
 
   // 👇 Ajoute ceci pour autoriser le frontend (port 3001)
   app.enableCors({
-    origin: 'http://localhost:3001',
+    origin: 'http://localhost:3000',
     credentials: true,
   });
 
