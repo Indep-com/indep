@@ -1,10 +1,12 @@
 generator client {
   provider = "prisma-client-js"
+  output        = "../generated/prisma"
+  binaryTargets = ["native", "darwin-arm64"]
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_MESSAGING_URL")
+  url      = env("DATABASE_URL")
 }
 
 model Message {

@@ -163,7 +163,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/enea/projets/m2/webService/indep/generated/prisma",
+      "value": "/Users/adel/Desktop/bureau/Ynov/indep/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -172,12 +172,16 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-1.1.x",
+        "value": "darwin-arm64",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "darwin-arm64"
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/enea/projets/m2/webService/indep/prisma/schema.prisma",
+    "sourceFilePath": "/Users/adel/Desktop/bureau/Ynov/indep/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -199,8 +203,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\n/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.\nmodel candidatures {\n  id                String    @id @default(uuid()) @db.Uuid\n  mission_id        String?   @db.Uuid\n  user_id           String?   @db.Uuid\n  lettre_motivation String?\n  status            String?   @default(\"en_attente\") @db.VarChar(20)\n  created_at        DateTime? @default(now()) @db.Timestamp(6)\n  missions          missions? @relation(fields: [mission_id], references: [id], onDelete: Cascade, onUpdate: NoAction)\n  users             users?    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)\n}\n\nmodel freelance_cvs {\n  id            String    @id @default(uuid()) @db.Uuid\n  user_id       String?   @db.Uuid\n  bio           String?\n  skills        String[]\n  portfolio_url String?\n  cv_url        String?\n  created_at    DateTime? @default(now()) @db.Timestamp(6)\n  users         users?    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)\n}\n\n/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.\nmodel missions {\n  id           String         @id @default(uuid()) @db.Uuid\n  user_id      String?        @db.Uuid\n  title        String         @db.VarChar(255)\n  description  String?\n  price        Decimal?       @db.Decimal(10, 2)\n  status       String?        @default(\"ouverte\") @db.VarChar(20)\n  created_at   DateTime?      @default(now()) @db.Timestamp(6)\n  candidatures candidatures[]\n  users        users?         @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)\n}\n\n/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.\nmodel users {\n  id            String          @id @default(uuid()) @db.Uuid\n  email         String          @unique @db.VarChar(255)\n  password      String          @db.VarChar(255)\n  name          String          @db.VarChar(255)\n  role          String          @db.VarChar(20)\n  created_at    DateTime?       @default(now()) @db.Timestamp(6)\n  candidatures  candidatures[]\n  freelance_cvs freelance_cvs[]\n  missions      missions[]\n}\n",
-  "inlineSchemaHash": "05ed86abe7803a8b594fcec7b56d1494a108705c2899105a1ef990cc09435d0b",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma\"\n  binaryTargets = [\"native\", \"darwin-arm64\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\n/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.\nmodel candidatures {\n  id                String    @id @default(uuid()) @db.Uuid\n  mission_id        String?   @db.Uuid\n  user_id           String?   @db.Uuid\n  lettre_motivation String?\n  status            String?   @default(\"en_attente\") @db.VarChar(20)\n  created_at        DateTime? @default(now()) @db.Timestamp(6)\n  missions          missions? @relation(fields: [mission_id], references: [id], onDelete: Cascade, onUpdate: NoAction)\n  users             users?    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)\n}\n\nmodel freelance_cvs {\n  id            String    @id @default(uuid()) @db.Uuid\n  user_id       String?   @db.Uuid\n  bio           String?\n  skills        String[]\n  portfolio_url String?\n  cv_url        String?\n  created_at    DateTime? @default(now()) @db.Timestamp(6)\n  users         users?    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)\n}\n\n/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.\nmodel missions {\n  id           String         @id @default(uuid()) @db.Uuid\n  user_id      String?        @db.Uuid\n  title        String         @db.VarChar(255)\n  description  String?\n  price        Decimal?       @db.Decimal(10, 2)\n  status       String?        @default(\"ouverte\") @db.VarChar(20)\n  created_at   DateTime?      @default(now()) @db.Timestamp(6)\n  candidatures candidatures[]\n  users        users?         @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)\n}\n\n/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.\nmodel users {\n  id            String          @id @default(uuid()) @db.Uuid\n  email         String          @unique @db.VarChar(255)\n  password      String          @db.VarChar(255)\n  name          String          @db.VarChar(255)\n  role          String          @db.VarChar(20)\n  created_at    DateTime?       @default(now()) @db.Timestamp(6)\n  candidatures  candidatures[]\n  freelance_cvs freelance_cvs[]\n  missions      missions[]\n}\n",
+  "inlineSchemaHash": "a0664917407e72dfce66783a3b51c4f8bb0424b2134bd051a3bbf0d1a95f3038",
   "copyEngine": true
 }
 config.dirname = '/'
