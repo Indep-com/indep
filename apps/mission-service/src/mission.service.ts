@@ -9,11 +9,22 @@ export class MissionService {
   constructor(private readonly pg: PgService) {}
 
   async findAll() {
-    const result = await this.pg.client.query('SELECT * FROM missions ORDER BY created_at DESC');
+    const result = await this.pg.client.query(
+      'SELECT * FROM missions ORDER BY created_at DESC',
+    );
     return result.rows;
   }
 
   async findOne(id: string) {
+    const result = await this.pg.client.query(
+      'SELECT * FROM missions WHERE id = $1',
+      [id],
+    );
+    if (result.rowCount === 0) {
+      throw new NotFoundException('Mission not found');
+    }
+    return result.rows[0];
+  }
     console.log('🔍 Recherche de mission avec ID :', id)
     try {
       const result = await this.pg.client.query('SELECT * FROM missions WHERE id = $1', [id])
@@ -35,7 +46,7 @@ export class MissionService {
     const result = await this.pg.client.query(
       `INSERT INTO missions (id, title, description, price, status)
        VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-      [id, data.title, data.description, data.price, data.status]
+      [id, data.title, data.description, data.price, data.status],
     );
     return result.rows[0];
   }
@@ -44,7 +55,7 @@ export class MissionService {
     const result = await this.pg.client.query(
       `UPDATE missions SET user_id = $1, title = $2, description = $3, price = $4, status = $5
        WHERE id = $6 RETURNING *`,
-      [data.user_id, data.title, data.description, data.price, data.status, id]
+      [data.user_id, data.title, data.description, data.price, data.status, id],
     );
     if (result.rowCount === 0) {
       throw new NotFoundException('Mission not found à mettre à jour');
@@ -53,7 +64,10 @@ export class MissionService {
   }
 
   async remove(id: string) {
-    const result = await this.pg.client.query('DELETE FROM missions WHERE id = $1', [id]);
+    const result = await this.pg.client.query(
+      'DELETE FROM missions WHERE id = $1',
+      [id],
+    );
     if (result.rowCount === 0) {
       throw new NotFoundException('Mission not found à supprimer');
     }

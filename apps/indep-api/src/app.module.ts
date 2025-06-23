@@ -1,18 +1,19 @@
 import { Module } from '@nestjs/common';
-import { ClientsModule, Transport } from '@nestjs/microservices';
-import { AppController } from './app.controller';
+import { ClientsModule } from '@nestjs/microservices';
 import { AppService } from './app.service';
 import { MissionController } from './mission/mission.controller';
 import { MissionProxyService } from './mission/mission-proxy.service';
 import { UtilisateurModule } from './utilisateur/utilisateur.module';
-import {AuthModule} from "./auth/auth.module";
-import {ConfigModule} from "@nestjs/config";
+import { MessagesModule } from './messages/messages.module';
+import { ConfigModule } from '@nestjs/config';
+import { AppController } from './app.controller';
+import { AuthModule } from './auth/auth.module';
 import { CandidatureModule } from './candidature/candidature.module';
-
 
 @Module({
   imports: [
-    ClientsModule.register([/*
+    ClientsModule.register([
+      /*
       {
         name: 'HELLO_SERVICE',
         transport: Transport.TCP,
@@ -28,7 +29,8 @@ import { CandidatureModule } from './candidature/candidature.module';
     AuthModule,
     CandidatureModule,
     AuthModule,
-    ConfigModule.forRoot({})
+    MessagesModule,
+    ConfigModule.forRoot({}),
   ],
   controllers: [AppController, MissionController],
   providers: [AppService, MissionProxyService],
