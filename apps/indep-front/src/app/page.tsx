@@ -28,7 +28,7 @@ export default function Page() {
         <div className="main-content">
           <header className={`header ${scrolled ? 'shrink' : ''}`}>
             <h1 style={{ flex: 1 }}>INDEP.COM</h1>
-            <Link href="/authentification" className="login-button">
+            <Link href="/login" className="login-button">
               Connexion
             </Link>
           </header>
