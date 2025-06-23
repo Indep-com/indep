@@ -27,8 +27,11 @@ const RegisterPage = () => {
             localStorage.setItem('authToken', token);
             router.push('/');
         } catch (err) {
-            console.error(err)
-            alert('Erreur réseau.')
+            if (axios.isAxiosError(err) && err.response) {
+                setMessage(err.response.data.message || 'Erreur lors de l&apos;inscription');
+            } else {
+                setMessage('Erreur réseau.');
+            }
         }
     };
 
@@ -68,7 +71,7 @@ const RegisterPage = () => {
                     />
                 </div>
 
-                <button type="submit">S'inscrire</button>
+                <button type="submit">S&apos;inscrire</button>
             </form>
 
             {message && <p style={{ color: 'red' }}>{message}</p>}
