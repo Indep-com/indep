@@ -1,0 +1,30 @@
+# apps/candidature-service/Dockerfile
+
+# Étape 1 : Construction
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Copie tous les fichiers nécessaires
+COPY . .
+
+# Installation des dépendances avec PNPM
+RUN corepack enable && pnpm install --no-frozen-lockfile
+
+# Build uniquement du service concerné
+RUN pnpm --filter=candidature-service build
+
+# Stage 2 : Run
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/dist/apps/candidature-service ./dist
+COPY --from=builder /app/apps/candidature-service/package.json ./package.json
+COPY --from=builder /app/node_modules ./node_modules
+
+CMD ["node", "dist/main"]
+
+
+# Exposition du port du service
+EXPOSE 4004

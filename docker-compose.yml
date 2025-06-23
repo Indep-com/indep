@@ -1,6 +1,51 @@
-services:
+version: '3.8'
 
-  gateway:
+services:
+  auth-service:
+    build:
+      context: .
+      dockerfile: apps/auth-service/Dockerfile
+    container_name: auth-service
+    ports:
+      - "4001:4001"
+    environment:
+      PORT: 4001
+    depends_on:
+      - nats
+
+  messaging-service:
+    build:
+      context: .
+      dockerfile: apps/messaging-service/Dockerfile
+    container_name: messaging-service
+    ports:
+      - "4002:4002"
+    environment:
+      PORT: 4002
+
+  mission-service:
+    build:
+      context: .
+      dockerfile: apps/mission-service/Dockerfile
+    container_name: mission-service
+    ports:
+      - "4003:4003"
+    environment:
+      PORT: 4003
+
+  candidature-service:
+    build:
+      context: .
+      dockerfile: apps/candidature-service/Dockerfile
+    container_name: candidature-service
+    ports:
+      - "4004:4004"
+    environment:
+      PORT: 4004
+    depends_on:
+      - rabbitmq
+
+  indep-api:
     build:
       context: .
       dockerfile: apps/indep-api/Dockerfile
@@ -8,38 +53,14 @@ services:
     ports:
       - "3002:3000"
     environment:
-      DATABASE_URL: postgres://user:password@db:5432/indep
+      PORT: 3000
     depends_on:
-      - db
-    restart: unless-stopped
+      - auth-service
+      - messaging-service
+      - mission-service
+      - candidature-service
 
-  hello-service:
-    build:
-      context: .
-      dockerfile: apps/hello-service/Dockerfile
-    container_name: hello-service
-    ports:
-      - "4001:4001"
-    environment:
-      DATABASE_URL: postgres://user:password@db:5432/indep
-    depends_on:
-      - db
-    restart: unless-stopped
-
-  world-service:
-    build:
-      context: .
-      dockerfile: apps/world-service/Dockerfile
-    container_name: world-service
-    ports:
-      - "4002:4002"
-    environment:
-      DATABASE_URL: postgres://user:password@db:5432/indep
-    depends_on:
-      - db
-    restart: unless-stopped
-
-  frontend:
+  indep-front:
     build:
       context: .
       dockerfile: apps/indep-front/Dockerfile
@@ -47,8 +68,24 @@ services:
     ports:
       - "3001:3000"
     depends_on:
-      - gateway
-    restart: unless-stopped
+      - indep-api
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  nats:
+    image: nats
+    container_name: nats
+    ports:
+      - "4222:4222"
+      - "8222:8222"
 
   minio:
     image: minio/minio
@@ -78,5 +115,4 @@ services:
       "
 
 volumes:
-  db-data:
   minio-data:

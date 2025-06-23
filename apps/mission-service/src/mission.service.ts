@@ -28,7 +28,6 @@ export class MissionService {
     console.log('🔍 Recherche de mission avec ID :', id)
     try {
       const result = await this.pg.client.query('SELECT * FROM missions WHERE id = $1', [id])
-      console.log('✅ Résultat brut :', result)
   
       if (result.rowCount === 0) {
         throw new NotFoundException('Mission not found')
@@ -36,7 +35,6 @@ export class MissionService {
   
       return result.rows[0]
     } catch (err) {
-      console.error('❌ Erreur dans findOne :', err)
       throw err
     }
   }  

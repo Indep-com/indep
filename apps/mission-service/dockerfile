@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 
 RUN corepack enable && pnpm install
-RUN pnpm --filter=messaging-service build
+RUN pnpm --filter=mission-service build
 
 # Final
 FROM node:20-alpine
@@ -20,4 +20,4 @@ COPY --from=builder /app/package.json ./package.json
 CMD ["node", "dist/main.js"]
 
 
-EXPOSE 4002
+EXPOSE 4003
