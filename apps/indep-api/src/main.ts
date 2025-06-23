@@ -8,7 +8,7 @@ async function bootstrap() {
 
   // 👇 Ajoute ceci pour autoriser le frontend (port 3001)
   app.enableCors({
-    origin: 'http://localhost:3001',
+    origin: 'http://localhost:3000',
     credentials: true,
   });
 
@@ -21,9 +21,9 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
+  app.enableCors({ origin: 'http://localhost:3000' });
 
-  await app.listen(3000);
-
-  console.log('🚀 indep-Api listening on http://localhost:3000');
+  await app.listen(3001);
+  console.log('🚀 indep-Api listening on http://localhost:3001');
 }
-bootstrap();
+void bootstrap();
