@@ -1,5 +1,6 @@
 import { JwtStrategy } from '../src/jwt.strategy';
 import { constants } from '../../../constants';
+import {Role} from "../src/enums/role.enum";
 
 describe('JwtStrategy', () => {
     let jwtStrategy: JwtStrategy;
@@ -16,7 +17,7 @@ describe('JwtStrategy', () => {
         const payload = {
             sub: '123',
             email: 'test@example.com',
-            role: 'admin',
+            role: Role.VISITEUR,
         };
 
         const result = await jwtStrategy.validate(payload);
@@ -24,7 +25,7 @@ describe('JwtStrategy', () => {
         expect(result).toEqual({
             userId: '123',
             email: 'test@example.com',
-            role: 'admin',
+            role: Role.VISITEUR,
         });
     });
 });
