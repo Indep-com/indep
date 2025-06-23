@@ -1,26 +1,12 @@
 import { Module } from '@nestjs/common';
-import { ClientsModule, Transport } from '@nestjs/microservices';
-import { AppController } from './app.controller';
+import { ClientsModule } from '@nestjs/microservices';
 import { AppService } from './app.service';
 import { UtilisateurModule } from './utilisateur/utilisateur.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
-  imports: [
-    ClientsModule.register([
-      {
-        name: 'HELLO_SERVICE',
-        transport: Transport.TCP,
-        options: { host: 'hello-service', port: 4001 },
-      },
-      {
-        name: 'WORLD_SERVICE',
-        transport: Transport.TCP,
-        options: { host: 'world-service', port: 4002 },
-      },
-    ]),
-    UtilisateurModule,
-  ],
-  controllers: [AppController],
+  imports: [ClientsModule.register([]), UtilisateurModule, MessagesModule],
+  controllers: [],
   providers: [AppService],
 })
 export class AppModule {}
