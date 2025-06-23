@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import './page.css'
 
 type Mission = {
-  id: number
+  id: string
   title: string
   description: string
   price: number
@@ -29,7 +29,12 @@ export default function MissionsPage() {
 
       <ul className="missions-list">
         {missions.map(mission => (
-          <li key={mission.id} className="mission-card">
+          <li
+            key={mission.id}
+            className="mission-card clickable"
+            onClick={() => 
+              router.push(`/missions/${mission.id}`)}
+          >
             <h3>{mission.title}</h3>
             <p>{mission.description}</p>
             <p><strong>Prix :</strong> {mission.price} €</p>
