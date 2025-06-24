@@ -23,7 +23,7 @@ export default function Chat({ senderId, recipientId, onMessageSent }: { senderI
   // Fonction pour récupérer et stocker le nom d'un utilisateur
   const fetchUserName = async (id: string) => {
     if (userNames[id]) return; 
-    const res = await fetch(`http://localhost:3001/utilisateur/${id}/recupererUnUtilisateurParId`);
+    const res = await fetch(`http://localhost:3000/utilisateur/${id}/recupererUnUtilisateurParId`);
     const user = await res.json();
     setUserNames((prev) => ({ ...prev, [id]: user.name || id }));
   };
@@ -41,7 +41,7 @@ export default function Chat({ senderId, recipientId, onMessageSent }: { senderI
   }, [messages]);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/messages?senderId=${senderId}&recipientId=${recipientId}`)
+    fetch(`http://localhost:3000/messages?senderId=${senderId}&recipientId=${recipientId}`)
       .then((res) => res.json())
       .then((data) => setMessages(data));
   }, [senderId, recipientId]);
@@ -64,7 +64,7 @@ export default function Chat({ senderId, recipientId, onMessageSent }: { senderI
   const sendMessage = async () => {
     const message: Message = { senderId, recipientId, message: text };
 
-    await fetch('http://localhost:3001/messages', {
+    await fetch('http://localhost:3000/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(message),

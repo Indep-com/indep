@@ -42,14 +42,14 @@ export default function ConversationChat() {
 
   useEffect(() => {
     if (!userId) return;
-    fetch(`http://localhost:3001/messages/conversations?userId=${userId}`)
+    fetch(`http://localhost:3000/messages/conversations?userId=${userId}`)
       .then((res) => res.json())
       .then((data) => setConversations(data));
   }, [userId]);
 
   useEffect(() => {
     if (showUsers && userId) {
-      fetch("http://localhost:3001/utilisateur/recupererToutUtilisateur")
+      fetch("http://localhost:3000/utilisateur/recupererToutUtilisateur")
         .then((res) => res.json())
         .then((data) => setUsers(data.filter((u: User) => u.id !== userId)));
     }
@@ -58,7 +58,7 @@ export default function ConversationChat() {
   // Fonction pour récupérer le nom d'un utilisateur par son id (avec cache)
   const fetchUserName = async (id: string) => {
     if (userNames[id]) return;
-    const res = await fetch(`http://localhost:3001/utilisateur/${id}/recupererUnUtilisateurParId`);
+    const res = await fetch(`http://localhost:3000/utilisateur/${id}/recupererUnUtilisateurParId`);
     const user = await res.json();
     setUserNames((prev) => ({ ...prev, [id]: user.name || user.id }));
   };
@@ -80,7 +80,7 @@ export default function ConversationChat() {
 
   const refreshConversations = () => {
     if (!userId) return;
-    fetch(`http://localhost:3001/messages/conversations?userId=${userId}`)
+    fetch(`http://localhost:3000/messages/conversations?userId=${userId}`)
       .then((res) => res.json())
       .then((data) => setConversations(data));
   };
