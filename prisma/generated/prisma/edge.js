@@ -37,10 +37,18 @@ exports.$Enums = {}
 /**
  * Prisma Client JS version: 6.10.1
  * Query Engine version: 9b628578b3b7cae625e8c927178f15a170e74a9c
+
+ * Prisma Client JS version: 6.10.1
+ * Query Engine version: 9b628578b3b7cae625e8c927178f15a170e74a9c
+
  */
 Prisma.prismaVersion = {
   client: "6.10.1",
   engine: "9b628578b3b7cae625e8c927178f15a170e74a9c"
+
+  client: "6.10.1",
+  engine: "9b628578b3b7cae625e8c927178f15a170e74a9c"
+
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -163,7 +171,9 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/adel/Desktop/bureau/Ynov/indep/prisma/generated/prisma",
+
+      "value": "C:\\Users\\guybo\\Documents\\YnovM2\\indep\\prisma\\generated\\prisma",
+
       "fromEnvVar": null
     },
     "config": {
@@ -172,7 +182,9 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+
+        "value": "windows",
+
         "native": true
       },
       {
@@ -181,11 +193,13 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/adel/Desktop/bureau/Ynov/indep/prisma/api/schema.prisma",
+    "sourceFilePath": "C:\\Users\\guybo\\Documents\\YnovM2\\indep\\prisma\\api\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env"
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../../.env"
+
   },
   "relativePath": "../../api",
   "clientVersion": "6.10.1",

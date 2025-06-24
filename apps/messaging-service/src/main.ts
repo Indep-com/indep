@@ -3,7 +3,7 @@ import { MessagingModule } from "./messaging.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(MessagingModule);
-  //app.enableCors(); -> faut ça je pense et t'a un probleme :)
-  await app.listen(4002);
+  app.enableCors();
+  await app.listen(4005);
 }
 void bootstrap();

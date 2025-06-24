@@ -126,7 +126,9 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/adel/Desktop/bureau/Ynov/indep/prisma/generated/prisma-messaging",
+
+      "value": "C:\\Users\\guybo\\Documents\\YnovM2\\indep\\prisma\\generated\\prisma-messaging",
+
       "fromEnvVar": null
     },
     "config": {
@@ -135,20 +137,18 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+
+        "value": "windows",
         "native": true
-      },
-      {
-        "fromEnvVar": null,
-        "value": "darwin-arm64"
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/adel/Desktop/bureau/Ynov/indep/prisma/messaging/schema.prisma",
+    "sourceFilePath": "C:\\Users\\guybo\\Documents\\YnovM2\\indep\\prisma\\messaging\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env"
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../messaging",
   "clientVersion": "6.10.1",
@@ -161,13 +161,16 @@ const config = {
   "inlineDatasources": {
     "db": {
       "url": {
-        "fromEnvVar": "DATABASE_URL",
+        "fromEnvVar": "DATABASE_MESSAGING_URL",
+
         "value": null
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma-messaging\"\n  binaryTargets = [\"native\", \"darwin-arm64\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Message {\n  id          String   @id @default(uuid())\n  senderId    String\n  recipientId String\n  message     String\n  timestamp   DateTime @default(now())\n\n  @@index([senderId, recipientId])\n}\n",
-  "inlineSchemaHash": "6060c867fc3f37d94787a4fda06ef5d5839c45c3467692e923c55caabed3f8de",
+
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma-messaging\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_MESSAGING_URL\")\n}\n\nmodel Message {\n  id          String   @id @default(uuid())\n  senderId    String\n  recipientId String\n  message     String\n  timestamp   DateTime @default(now())\n\n  @@index([senderId, recipientId])\n}\n",
+  "inlineSchemaHash": "8dfb814139e37da64236f75bc0afb6972ac62a2ad86ac8ef23b07f5c3a11e5d7",
+
   "copyEngine": true
 }
 
@@ -176,7 +179,9 @@ const fs = require('fs')
 config.dirname = __dirname
 if (!fs.existsSync(path.join(__dirname, 'schema.prisma'))) {
   const alternativePaths = [
-    "../generated/prisma-messaging",
+
+    "prisma/generated/prisma-messaging",
+
     "generated/prisma-messaging",
   ]
   
@@ -206,8 +211,10 @@ exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, "libquery_engine-darwin-arm64.dylib.node");
-path.join(process.cwd(), "../generated/prisma-messaging/libquery_engine-darwin-arm64.dylib.node")
+
+path.join(__dirname, "query_engine-windows.dll.node");
+path.join(process.cwd(), "prisma/generated/prisma-messaging/query_engine-windows.dll.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
-path.join(process.cwd(), "../generated/prisma-messaging/schema.prisma")
+path.join(process.cwd(), "prisma/generated/prisma-messaging/schema.prisma")
+
