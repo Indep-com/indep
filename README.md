@@ -1,10 +1,10 @@
-# Indep.com 🌐
+# Indep.com 
 
 **Plateforme de mise en relation entre freelances/indépendants et clients.**
 
 ---
 
-## 🔍 Objectif du projet
+## Objectif du projet
 
 Créer une application web permettant aux freelances de proposer leurs compétences et aux clients de publier des missions, avec un système de candidature, de messagerie privée, de notifications et de paiements.
 
@@ -12,7 +12,7 @@ Projet réalisé en architecture **microservices** pour garantir la scalabilité
 
 ---
 
-## 📈 Stack technique
+## Stack technique
 
 - **Frontend** : Next.js / React
 - **Backend** : NestJS (API REST)
@@ -22,7 +22,7 @@ Projet réalisé en architecture **microservices** pour garantir la scalabilité
 
 ---
 
-## 🔄 Architecture microservices
+## Architecture microservices
 
 - **Auth Service** : Gestion des utilisateurs, login, register, rafraîchissement de tokens
 - **Mission Service** : Création, modification et fermeture des missions
@@ -31,7 +31,7 @@ Projet réalisé en architecture **microservices** pour garantir la scalabilité
 
 ---
 
-## 🛋 Fonctionnalités principales
+## Fonctionnalités principales
 
 - Inscription et connexion utilisateurs (Freelance / Client)
 - Gestion de profils indépendants et d'entreprise
@@ -41,7 +41,7 @@ Projet réalisé en architecture **microservices** pour garantir la scalabilité
 
 ---
 
-## 📚 Guide de déploiement local
+## Guide de déploiement local
 
 ### 1. Prérequis
 
@@ -93,23 +93,31 @@ DATABASE_URL=postgresql://user:password@db:5432/indepcom
 DATABASE_MESSAGING_URL=postgresql://user:password@db:5432/indepcom
 ```
 
-### 5. Lancer les services avec Docker
+**Candidature `.env`**
+```bash
+DATABASE_URL=postgresql://user:password@db:5432/indepcom
+```
+
+### 5. Lancer les différents services 
+```bash
+pnpm --filter indep-api start:dev            # API Gateway
+pnpm --filter auth-service start:dev         # Authentification
+pnpm --filter mission-service start:dev      # Missions
+pnpm --filter candidature-service start:dev  # Candidatures
+pnpm --filter messaging-service dev          # Messagerie
+pnpm --filter indep-front dev                # Frontend Next.js
+```
+
+### 6. Lancer le serveur NATS avec Docker
 
 **Depuis la racine du projet** :
 
 ```bash
-docker-compose up --build
+docker run --rm -p 4222:4222 --name nats-server nats -D
 ```
-
-Cela lancera :
-
-- Frontend (Next.js)
-- Backend (NestJS)
-- Base de données PostgreSQL
-
 ---
 
-## 🔬 Commandes utiles
+## Commandes utiles pour génerer les services prisma
 ```bash
 cd prisma/api
 npx prisma generate
@@ -119,7 +127,7 @@ npx prisma generate
 ```
 ---
 
-## 📅 Auteurs
+## Auteurs
 
 - Guy Boireau
 - Adel Djahnit
