@@ -125,7 +125,9 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
+
       "value": "C:\\Users\\guybo\\Documents\\YnovM2\\indep\\prisma\\generated\\prisma-messaging",
+
       "fromEnvVar": null
     },
     "config": {
@@ -157,13 +159,15 @@ const config = {
   "inlineDatasources": {
     "db": {
       "url": {
+
         "fromEnvVar": "DATABASE_MESSAGING_URL",
-        "value": null
       }
     }
   },
+
   "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma-messaging\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_MESSAGING_URL\")\n}\n\nmodel Message {\n  id          String   @id @default(uuid())\n  senderId    String\n  recipientId String\n  message     String\n  timestamp   DateTime @default(now())\n\n  @@index([senderId, recipientId])\n}\n",
   "inlineSchemaHash": "8dfb814139e37da64236f75bc0afb6972ac62a2ad86ac8ef23b07f5c3a11e5d7",
+
   "copyEngine": true
 }
 config.dirname = '/'
@@ -175,7 +179,9 @@ config.compilerWasm = undefined
 
 config.injectableEdgeEnv = () => ({
   parsed: {
+
     DATABASE_MESSAGING_URL: typeof globalThis !== 'undefined' && globalThis['DATABASE_MESSAGING_URL'] || typeof process !== 'undefined' && process.env && process.env.DATABASE_MESSAGING_URL || undefined
+
   }
 })
 

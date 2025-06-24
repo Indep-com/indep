@@ -17,10 +17,8 @@ Projet réalisé en architecture **microservices** pour garantir la scalabilité
 - **Frontend** : Next.js / React
 - **Backend** : NestJS (API REST)
 - **Base de données** : PostgreSQL
-- **Cache / Queue** : Redis + BullMQ
 - **ORM** : Prisma
 - **Authentification** : JWT (access + refresh tokens)
-- **Infrastructure** : Railway, Vercel, Render, Docker
 
 ---
 
@@ -30,9 +28,6 @@ Projet réalisé en architecture **microservices** pour garantir la scalabilité
 - **Mission Service** : Création, modification et fermeture des missions
 - **Application Service** : Gestion des candidatures freelances
 - **Messaging Service** : Système de chat entre freelances et clients
-- **Notification Service** : Gestion des envois d'e-mails et notifications en asynchrone
-- **Payment Service** : Gestion des paiements et commissions
-- **Admin Service** : Interface d'administration et statistiques
 
 ---
 
@@ -43,9 +38,6 @@ Projet réalisé en architecture **microservices** pour garantir la scalabilité
 - Publication de missions
 - Candidature à des missions
 - Système de messagerie privée en temps réel (avec WebSocket + Redis)
-- Notifications internes et par e-mail
-- Gestion des paiements client → freelance
-- Dashboard de gestion pour les utilisateurs
 
 ---
 
@@ -56,22 +48,34 @@ Projet réalisé en architecture **microservices** pour garantir la scalabilité
 - Node.js (>=18)
 - PostgreSQL
 - Redis
-- Docker (obligatoire pour lancer toute la solution)
+- Docker
 
 ### 2. Cloner le projet
 
 ```bash
 git clone https://github.com/Indep-com/indep.git
-cd indep-com
+cd indep
 ```
 
 ### 3. Installer les dépendances
 
-Frontend et Backend :
+Frontend, Backend et les différents microservices :
 
 ```bash
-cd frontend && pnpm install
-cd ../backend && pnpm install
+cd apps/indep-api
+pnpm install
+cd ../indep-front
+pnpm install
+cd ../messaging-service
+pnpm install
+cd ../mission-service
+pnpm install
+cd ../candidature-service
+pnpm install
+cd ../auth-service
+pnpm install
+cd ../candidature-service
+pnpm install
 ```
 
 ### 4. Configurer les environnements
@@ -82,15 +86,11 @@ Créer un fichier `.env` pour chaque partie :
 
 ```bash
 DATABASE_URL=postgresql://user:password@db:5432/indepcom
-REDIS_HOST=redis
-REDIS_PORT=6379
-JWT_SECRET=your_jwt_secret
 ```
 
-**Frontend `.env.local`**
-
+**Messaging `.env`**
 ```bash
-NEXT_PUBLIC_API_URL=http://localhost:3001
+DATABASE_MESSAGING_URL=postgresql://user:password@db:5432/indepcom
 ```
 
 ### 5. Lancer les services avec Docker
@@ -106,30 +106,17 @@ Cela lancera :
 - Frontend (Next.js)
 - Backend (NestJS)
 - Base de données PostgreSQL
-- Redis
 
 ---
 
 ## 🔬 Commandes utiles
+```bash
+cd prisma/api
+npx prisma generate
 
-| Action | Commande |
-|:-------|:---------|
-| Générer client Prisma | `npx prisma generate` |
-| Appliquer migration DB | `npx prisma migrate dev` |
-| Lancer Bull board (dashboard des jobs) | `npm run bull:ui` |
-| Build frontend | `npm run build` |
-
----
-
-## 📅 Avancement
-
-- [x] Authentification JWT
-- [x] Gestion Missions / Candidatures
-- [x] Système de messagerie temps réel
-- [x] Notifications asynchrones avec BullMQ
-- [ ] Paiement intégré (Stripe en sandbox)
-- [ ] Interface Admin Dashboard
-
+cd ../messaging
+npx prisma generate
+```
 ---
 
 ## 📅 Auteurs
