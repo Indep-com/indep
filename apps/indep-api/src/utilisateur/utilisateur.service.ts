@@ -22,10 +22,10 @@ export class UtilisateurService {
       if (!createUtilisateurDto.email) {
         throw new BadRequestException("L'email est requis.");
       }
-      const UtilisteurExistant = await this.prisma.users.findUnique({
+      const utilisteurExistant = await this.prisma.users.findUnique({
         where: { email: createUtilisateurDto.email },
       })
-      if (UtilisteurExistant) {
+      if (utilisteurExistant) {
         throw new ConflictException('L\'Utilisateur s\'existe déjà');
       }
       return this.prisma.users.create({
