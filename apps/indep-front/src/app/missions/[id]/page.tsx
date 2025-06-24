@@ -28,15 +28,15 @@ export default function MissionDetailPage() {
   const [isFreelance, setIsFreelance] = useState(false)
   const params = useParams()
 
-  const id = Array.isArray(params.id) ? params.id[0] : params.id  // ✅ Correction ici
-
+  // Supprimer manuellement le token
   const handleClear = () => {
     localStorage.removeItem('authToken')
-    alert('authToken supprimé du localStorage')
+    alert('✅ authToken supprimé du localStorage')
     location.reload()
   }
 
   useEffect(() => {
+    // Décodage du JWT
     const token = localStorage.getItem('authToken')
     if (token) {
       try {
@@ -45,37 +45,38 @@ export default function MissionDetailPage() {
           setIsFreelance(true)
         }
       } catch (err) {
-        console.error('Erreur lors du décodage du token :', err)
+        console.error('❌ Erreur lors du décodage du token :', err)
       }
     }
 
+    // Récupération de la mission
     const fetchMission = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/missions/${id}`)
+        const res = await fetch(`http://localhost:3000/missions/${params.id}`)
         const data = await res.json()
         setMission(data)
       } catch (err) {
-        console.error('Erreur lors du fetch de la mission :', err)
+        console.error('❌ Erreur lors du fetch de la mission :', err)
       } finally {
         setLoading(false)
       }
     }
 
-    if (id) fetchMission()
-  }, [id])
+    fetchMission()
+  }, [params.id])
 
   const handleCandidature = async () => {
     const token = localStorage.getItem('authToken')
-    if (!token) return setMessage('Token manquant.')
+    if (!token) return setMessage('❌ Token manquant.')
 
     let userId: string
     try {
       const decodedToken = jwtDecode<JwtPayload>(token)
       userId = decodedToken.sub
     } catch (err) {
-      console.error('Erreur de décodage token :', err)
-      return setMessage('Token invalide.')
-    }
+        console.error('Erreur de décodage token :', err)
+        return setMessage('❌ Token invalide.')
+      }      
 
     const payload = {
       mission_id: mission?.id,
@@ -94,11 +95,11 @@ export default function MissionDetailPage() {
         setMessage('🎉 Candidature envoyée avec succès !')
       } else {
         const err = await res.json()
-        setMessage(`Erreur : ${err.message || 'Serveur'}`)
+        setMessage(`❌ Erreur : ${err.message || 'Serveur'}`)
       }
     } catch (err) {
-      console.error('Erreur réseau :', err)
-      setMessage('Erreur réseau.')
+      console.error('❌ Erreur réseau :', err)
+      setMessage('❌ Erreur réseau.')
     }
   }
 

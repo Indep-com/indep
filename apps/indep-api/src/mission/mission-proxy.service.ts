@@ -10,7 +10,7 @@ export class MissionProxyService {
     return data;
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const { data } = await axios.get(`${this.baseUrl}/missions/${id}`);
     return data;
   }
@@ -20,12 +20,12 @@ export class MissionProxyService {
     return data;
   }
 
-  async update(id: number, dto: any) {
+  async update(id: string, dto: any) {
     const { data } = await axios.patch(`${this.baseUrl}/missions/${id}`, dto);
     return data;
   }
 
-  async delete(id: number) {
+  async delete(id: string) {
     const { data } = await axios.delete(`${this.baseUrl}/missions/${id}`);
     return data;
   }
