@@ -17,4 +17,9 @@ export class MessagingController {
   async getConversations(@Query("userId") userId: string) {
     return this.messagingService.getConversationPartners(userId);
   }
+
+  @Get("/all")
+  async getAllMessages() {
+    return this.messagingService.getAllMessages();
+  }
 }
