@@ -15,14 +15,14 @@ interface User {
   name: string;
 }
 
-export default function Chat({ senderId, recipientId }: { senderId: string; recipientId: string }) {
+export default function Chat({ senderId, recipientId, onMessageSent }: { senderId: string; recipientId: string; onMessageSent?: () => void }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [text, setText] = useState('');
   const [userNames, setUserNames] = useState<{ [id: string]: string }>({});
 
   // Fonction pour récupérer et stocker le nom d'un utilisateur
   const fetchUserName = async (id: string) => {
-    if (userNames[id]) return; // déjà chargé
+    if (userNames[id]) return; 
     const res = await fetch(`http://localhost:3001/utilisateur/${id}/recupererUnUtilisateurParId`);
     const user = await res.json();
     setUserNames((prev) => ({ ...prev, [id]: user.name || id }));
@@ -72,10 +72,17 @@ export default function Chat({ senderId, recipientId }: { senderId: string; reci
 
     socket.emit('sendMessage', message);
     setText('');
+    if (onMessageSent) onMessageSent();
   };
 
   // Utilitaire pour afficher le nom ou l'id si pas encore chargé
   const getUserName = (id: string) => userNames[id] || id;
+
+  useEffect(() => {
+    if (recipientId && !userNames[recipientId]) {
+      fetchUserName(recipientId);
+    }
+  }, [recipientId]);
 
   return (
     <div>
