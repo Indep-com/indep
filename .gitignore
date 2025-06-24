@@ -1,0 +1,76 @@
+# ====================================
+# Modules et caches
+# ====================================
+**/node_modules/
+**/.cache/
+# pnpm crée aussi un dossier .pnpm dans chaque node_modules
+**/node_modules/.pnpm/
+
+# ====================================
+# Sorties de build (front et back)
+# ====================================
+**/dist/
+**/build/
+
+# ====================================
+# Rapports de couverture de tests
+# ====================================
+**/coverage/
+
+# ====================================
+# Fichiers de logs
+# ====================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ====================================
+# Verrouillage des versions
+# ====================================
+# - Garder pnpm-lock.yaml sous versionnement
+# - Ignorer éventuellement lockfiles temporaires
+*.lock
+
+# ====================================
+# Variables d’environnement
+# ====================================
+.env
+.env.local
+.env.*.local
+
+# ====================================
+# Fichiers temporaires et OS
+# ====================================
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# ====================================
+# IDE / éditeurs
+# ====================================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.code-workspace
+
+# ====================================
+# TypeScript
+# ====================================
+*.tsbuildinfo
+
+# ====================================
+# Cachés pnpm (optionnel)
+# ====================================
+# Si vous activez le store local au sein du repo :
+.pnpm-store/
+
+# ====================================
+# Configuration pnpm
+# ====================================
+# pnpm-workspace.yaml doit rester versionné !

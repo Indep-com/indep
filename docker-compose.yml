@@ -1,0 +1,82 @@
+services:
+
+  gateway:
+    build:
+      context: .
+      dockerfile: apps/indep-api/Dockerfile
+    container_name: indep-api
+    ports:
+      - "3002:3000"
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/indep
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  hello-service:
+    build:
+      context: .
+      dockerfile: apps/hello-service/Dockerfile
+    container_name: hello-service
+    ports:
+      - "4001:4001"
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/indep
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  world-service:
+    build:
+      context: .
+      dockerfile: apps/world-service/Dockerfile
+    container_name: world-service
+    ports:
+      - "4002:4002"
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/indep
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/indep-front/Dockerfile
+    container_name: indep-front
+    ports:
+      - "3001:3000"
+    depends_on:
+      - gateway
+    restart: unless-stopped
+
+  minio:
+    image: minio/minio
+    container_name: indep-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: password123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+
+  createbuckets:
+    image: minio/mc
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      sleep 5;
+      mc alias set myminio http://minio:9000 admin password123;
+      mc mb myminio/cv-bucket;
+      mc policy set public myminio/cv-bucket;
+      exit 0;
+      "
+
+volumes:
+  db-data:
+  minio-data:
