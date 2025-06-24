@@ -1,138 +1,63 @@
 # Indep.com 🌐
 
-**Plateforme de mise en relation entre freelances/indépendants et clients.**
+Plateforme de mise en relation entre freelances et clients.
 
----
+Ce monorepo PNPM regroupe l'ensemble des microservices NestJS et l'interface
+Next.js nécessaires au fonctionnement du projet.
 
-## 🔍 Objectif du projet
+## Structure du dépôt
 
-Créer une application web permettant aux freelances de proposer leurs compétences et aux clients de publier des missions, avec un système de candidature, de messagerie privée, de notifications et de paiements.
+- **apps/indep-api** : passerelle API (NestJS) exposant les routes REST et
+  déléguant aux microservices.
+- **apps/auth-service** : service d'authentification avec JWT.
+- **apps/mission-service** : gestion des missions (CRUD) stockées dans PostgreSQL.
+- **apps/candidature-service** : traitement des candidatures via RabbitMQ.
+- **apps/messaging-service** : messagerie temps réel (WebSocket + Prisma).
+- **apps/indep-front** : application web Next.js accessible aux utilisateurs.
 
-Projet réalisé en architecture **microservices** pour garantir la scalabilité, la performance et la maintenabilité.
+## Mise en place rapide
 
----
-
-## 📈 Stack technique
-
-- **Frontend** : Next.js / React
-- **Backend** : NestJS (API REST)
-- **Base de données** : PostgreSQL
-- **Cache / Queue** : Redis + BullMQ
-- **ORM** : Prisma
-- **Authentification** : JWT (access + refresh tokens)
-- **Infrastructure** : Railway, Vercel, Render, Docker
-
----
-
-## 🔄 Architecture microservices
-
-- **Auth Service** : Gestion des utilisateurs, login, register, rafraîchissement de tokens
-- **Mission Service** : Création, modification et fermeture des missions
-- **Application Service** : Gestion des candidatures freelances
-- **Messaging Service** : Système de chat entre freelances et clients
-- **Notification Service** : Gestion des envois d'e-mails et notifications en asynchrone
-- **Payment Service** : Gestion des paiements et commissions
-- **Admin Service** : Interface d'administration et statistiques
-
----
-
-## 🛋 Fonctionnalités principales
-
-- Inscription et connexion utilisateurs (Freelance / Client)
-- Gestion de profils indépendants et d'entreprise
-- Publication de missions
-- Candidature à des missions
-- Système de messagerie privée en temps réel (avec WebSocket + Redis)
-- Notifications internes et par e-mail
-- Gestion des paiements client → freelance
-- Dashboard de gestion pour les utilisateurs
-
----
-
-## 📚 Guide de déploiement local
-
-### 1. Prérequis
-
-- Node.js (>=18)
-- PostgreSQL
-- Redis
-- Docker (obligatoire pour lancer toute la solution)
-
-### 2. Cloner le projet
+1. **Cloner le dépôt puis installer les dépendances**
 
 ```bash
-git clone https://github.com/Indep-com/indep.git
-cd indep-com
+pnpm install
 ```
 
-### 3. Installer les dépendances
+2. **Configurer les variables d'environnement**
 
-Frontend et Backend :
+Chaque service accédant à une base de données attend une variable `DATABASE_URL`
+(ou `DATABASE_MESSAGING_URL` pour le service de messagerie). Exemple :
 
 ```bash
-cd frontend && pnpm install
-cd ../backend && pnpm install
+DATABASE_URL=postgres://user:password@localhost:5432/indep
 ```
 
-### 4. Configurer les environnements
-
-Créer un fichier `.env` pour chaque partie :
-
-**Backend `.env`**
+3. **Lancer les services en développement**
 
 ```bash
-DATABASE_URL=postgresql://user:password@db:5432/indepcom
-REDIS_HOST=redis
-REDIS_PORT=6379
-JWT_SECRET=your_jwt_secret
+pnpm --filter indep-api start:dev            # API Gateway
+pnpm --filter auth-service start:dev         # Authentification
+pnpm --filter mission-service start:dev      # Missions
+pnpm --filter candidature-service start:dev  # Candidatures
+pnpm --filter messaging-service dev          # Messagerie
+pnpm --filter indep-front dev                # Frontend Next.js
 ```
 
-**Frontend `.env.local`**
-
-```bash
-NEXT_PUBLIC_API_URL=http://localhost:3001
-```
-
-### 5. Lancer les services avec Docker
-
-**Depuis la racine du projet** :
+Une configuration Docker Compose est également disponible :
 
 ```bash
 docker-compose up --build
 ```
 
-Cela lancera :
+## Tests
 
-- Frontend (Next.js)
-- Backend (NestJS)
-- Base de données PostgreSQL
-- Redis
+Chaque microservice possède des tests Jest. Ils peuvent être exécutés avec :
 
----
+```bash
+pnpm --filter <service> test
+```
 
-## 🔬 Commandes utiles
-
-| Action | Commande |
-|:-------|:---------|
-| Générer client Prisma | `npx prisma generate` |
-| Appliquer migration DB | `npx prisma migrate dev` |
-| Lancer Bull board (dashboard des jobs) | `npm run bull:ui` |
-| Build frontend | `npm run build` |
-
----
-
-## 📅 Avancement
-
-- [x] Authentification JWT
-- [x] Gestion Missions / Candidatures
-- [x] Système de messagerie temps réel
-- [x] Notifications asynchrones avec BullMQ
-- [ ] Paiement intégré (Stripe en sandbox)
-- [ ] Interface Admin Dashboard
-
----
-
-## 📅 Auteurs
+## Auteurs
 
 - Guy Boireau
 - Adel Djahnit
