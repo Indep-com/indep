@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output        = "../generated/prisma"
+  output        = "../generated/prisma-messaging"
   binaryTargets = ["native", "darwin-arm64"]
 }
 
