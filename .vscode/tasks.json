@@ -1,0 +1,124 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Start NATS",
+        "type": "shell",
+        "command": "bash",
+        "args": [
+          "-c",
+          "lsof -i :4222 || nats-server"
+        ],
+        "isBackground": true,
+        "problemMatcher": [],
+        "group": "build"
+      },
+      {
+        "label": "Start RabbitMQ",
+        "type": "shell",
+        "command": "bash",
+        "args": [
+          "-c",
+          "lsof -i :5672 || brew services start rabbitmq"
+        ],
+        "isBackground": true,
+        "problemMatcher": [],
+        "group": "build"
+      },
+      {
+        "label": "Start auth-service",
+        "type": "shell",
+        "command": "bash",
+        "args": [
+          "-c",
+          "sleep 2 && pnpm --filter=auth-service start"
+        ],
+        "options": {
+          "env": {
+            "PORT": "4001"
+          }
+        },
+        "dependsOn": ["Start NATS"],
+        "problemMatcher": [],
+        "group": "build"
+      },
+      {
+        "label": "Start messaging-service",
+        "type": "shell",
+        "command": "pnpm --filter=messaging-service dev",
+        "options": {
+          "env": {
+            "PORT": "4002"
+          }
+        },
+        "problemMatcher": [],
+        "group": "build"
+      },
+      {
+        "label": "Start mission-service",
+        "type": "shell",
+        "command": "pnpm --filter=mission-service start",
+        "options": {
+          "env": {
+            "PORT": "4003"
+          }
+        },
+        "problemMatcher": [],
+        "group": "build"
+      },
+      {
+        "label": "Start candidature-service",
+        "type": "shell",
+        "command": "pnpm --filter=candidature-service start",
+        "options": {
+          "env": {
+            "PORT": "4004"
+          }
+        },
+        "dependsOn": ["Start RabbitMQ"],
+        "problemMatcher": [],
+        "group": "build"
+      },
+      {
+        "label": "Start indep-api",
+        "type": "shell",
+        "command": "pnpm --filter=indep-api start:dev",
+        "options": {
+          "env": {
+            "PORT": "3000"
+          }
+        },
+        "problemMatcher": [],
+        "group": "build"
+      },
+      {
+        "label": "Start front",
+        "type": "shell",
+        "command": "pnpm --filter=indep-front dev",
+        "options": {
+          "env": {
+            "PORT": "3001"
+          }
+        },
+        "problemMatcher": [],
+        "group": "build"
+      },
+      {
+        "label": "TOUS les microservices",
+        "dependsOn": [
+          "Start auth-service",
+          "Start messaging-service",
+          "Start mission-service",
+          "Start candidature-service",
+          "Start indep-api",
+          "Start front"
+        ],
+        "dependsOrder": "parallel",
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  }
