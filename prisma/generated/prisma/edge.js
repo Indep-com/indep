@@ -185,7 +185,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../api",
   "clientVersion": "6.10.1",

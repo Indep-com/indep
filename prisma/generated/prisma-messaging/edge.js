@@ -147,7 +147,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../messaging",
   "clientVersion": "6.10.1",
@@ -160,13 +160,13 @@ const config = {
   "inlineDatasources": {
     "db": {
       "url": {
-        "fromEnvVar": "DATABASE_URL",
+        "fromEnvVar": "DATABASE_MESSAGING_URL",
         "value": null
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma-messaging\"\n  binaryTargets = [\"native\", \"darwin-arm64\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Message {\n  id          String   @id @default(uuid())\n  senderId    String\n  recipientId String\n  message     String\n  timestamp   DateTime @default(now())\n\n  @@index([senderId, recipientId])\n}\n",
-  "inlineSchemaHash": "6060c867fc3f37d94787a4fda06ef5d5839c45c3467692e923c55caabed3f8de",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma-messaging\"\n  binaryTargets = [\"native\", \"darwin-arm64\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_MESSAGING_URL\")\n}\n\nmodel Message {\n  id          String   @id @default(uuid())\n  senderId    String\n  recipientId String\n  message     String\n  timestamp   DateTime @default(now())\n\n  @@index([senderId, recipientId])\n}\n",
+  "inlineSchemaHash": "a60cafaa80d33be50b27b5811c9b2aaad529792fdd17078f5d3175bd4b8a5029",
   "copyEngine": true
 }
 config.dirname = '/'
@@ -178,7 +178,7 @@ config.compilerWasm = undefined
 
 config.injectableEdgeEnv = () => ({
   parsed: {
-    DATABASE_URL: typeof globalThis !== 'undefined' && globalThis['DATABASE_URL'] || typeof process !== 'undefined' && process.env && process.env.DATABASE_URL || undefined
+    DATABASE_MESSAGING_URL: typeof globalThis !== 'undefined' && globalThis['DATABASE_MESSAGING_URL'] || typeof process !== 'undefined' && process.env && process.env.DATABASE_MESSAGING_URL || undefined
   }
 })
 

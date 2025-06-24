@@ -1,27 +1,35 @@
-import {Injectable, UnauthorizedException} from '@nestjs/common';
-import {JwtService} from "@nestjs/jwt";
-import {UtilisateurModel} from "./models/utilisateur.model";
-import {UtilisateurClientService} from "./utilisateur-client.service";
-import {LoginDto} from "./dto/login.dto";
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { UtilisateurModel } from './models/utilisateur.model';
+import { UtilisateurClientService } from './utilisateur-client.service';
+import { LoginDto } from './dto/login.dto';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly jwtService: JwtService,
-              private readonly utilisateurClientService: UtilisateurClientService,) {}
-
-  private blacklistedTokens = new Set<string>();
+  constructor(
+    private readonly jwtService: JwtService,
+    private readonly utilisateurClientService: UtilisateurClientService,
+  ) {}
 
   async login({ email, password }: LoginDto) {
-    const utilisateur: UtilisateurModel = await this.utilisateurClientService.utilisateurParEmail(email);
+    const utilisateur: UtilisateurModel =
+      await this.utilisateurClientService.utilisateurParEmail(email);
 
-    const passwordIsValid = await bcrypt.compare(password, utilisateur.password);
+    const passwordIsValid = await bcrypt.compare(
+      password,
+      utilisateur.password,
+    );
 
     if (email !== utilisateur.email || !passwordIsValid) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const payload = { sub: utilisateur.id, email: utilisateur.email,  role: utilisateur.role, };
+    const payload = {
+      sub: utilisateur.id,
+      email: utilisateur.email,
+      role: utilisateur.role,
+    };
     return {
       message: 'Authentification réussie',
       access_token: this.jwtService.sign(payload),
@@ -40,15 +48,6 @@ export class AuthService {
       access_token: token,
     };
   }
-
-  async invalidateToken(token: string): Promise<void> {
-    this.blacklistedTokens.add(token);
-  }
-
-  isTokenInvalidated(token: string): boolean {
-    return this.blacklistedTokens.has(token);
-  }
-
 
   async verify(token: string) {
     try {

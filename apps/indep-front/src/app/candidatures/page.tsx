@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react'
 
 type Candidature = {
   id: string
-  lettre_motivation?: string
-  status?: string
-  missions?: {
+  lettre_motivation: string
+  status: string
+  missions: {
     title: string
   }
-  users?: {
+  users: {
     name: string
   }
 }

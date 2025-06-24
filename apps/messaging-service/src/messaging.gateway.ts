@@ -29,8 +29,6 @@ export class MessagingGateway
     data: { senderId: string; recipientId: string; message: string },
     @ConnectedSocket() client: Socket,
   ) {
-    console.log("Message reçu du client :", data);
-
     const savedMessage = await this.messagingService.saveMessage(data);
 
     client.broadcast.emit("newMessage", savedMessage);

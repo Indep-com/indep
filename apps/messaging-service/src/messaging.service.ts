@@ -90,4 +90,10 @@ export class MessagingService {
       orderBy: { timestamp: "asc" },
     });
   }
+
+  async getAllMessages() {
+    return this.prisma.message.findMany({
+      orderBy: { timestamp: "asc" },
+    });
+  }
 }
