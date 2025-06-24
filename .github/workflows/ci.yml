@@ -55,7 +55,7 @@ jobs:
         run: pnpm lint
 
       - name: 🧪 Run tests
-        run: pnpm test --passWithNoTests
+        run: pnpm test 
 
   frontend:
     needs: install
